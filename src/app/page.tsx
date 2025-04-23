@@ -1,95 +1,104 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
+import EventCard from "@/entities/gameEvent/ui/eventCard";
+import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
+import { gameEventApiManager } from "@/entities/gameEvent/api/gameEventApiManager";
+import { useLayoutEffect, useState } from "react";
+import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
+import SearchIcon from "../../public/icons/search.svg";
+import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
+import SearchInput from "@/shared/widgets/searchInput/searchInput";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [events, setEvents] = useState<GameEvent[] | undefined>(undefined);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  const [searchEventsRequest, mutateSearchEventsRequest] = useMutateRequest(
+    gameEventApiManager.searchEvents,
+    {
+      onSuccess: (events: GameEvent[]) => {
+        setEvents(events);
+      },
+      onFail: () => {},
+    }
+  );
+
+  useLayoutEffect(() => {
+    mutateSearchEventsRequest({
+      type: "all",
+      disciplinesIds: [1, 2],
+      managersIds: [1, 2],
+      developersIds: [1, 2],
+      prizeMinLimit: 1000,
+      prizeMaxLimit: 1000000,
+      startTime: "1232131423",
+      endTime: "3422342342",
+    });
+  }, []);
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        padding: 20,
+        paddingBottom: 0,
+        gap: MySpacing.s15,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          width: "25%",
+          flexDirection: "column",
+          gap: MySpacing.s10,
+          position: "sticky",
+          top: 10,
+          paddingBottom: 20,
+        }}
+      >
+        <SearchInput></SearchInput>
+        <div
+          style={{
+            display: "flex",
+            backgroundColor: MyColors.bg2,
+            height: "100%",
+            width: "100%",
+            borderRadius: MyBordersRadius.r20,
+          }}
+        ></div>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          width: "75%",
+          flexWrap: "wrap",
+          gap: MySpacing.s10,
+          overflowY: "auto",
+          scrollbarWidth: "none",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            flexWrap: "wrap",
+            gap: MySpacing.s10,
+          }}
+        >
+          {events ? (
+            [...events, ...events, ...events, ...events].map((event, index) => (
+              <EventCard event={event} key={index}></EventCard>
+            ))
+          ) : (
+            <div></div>
+          )}
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
