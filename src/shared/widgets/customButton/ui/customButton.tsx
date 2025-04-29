@@ -29,7 +29,9 @@ export const CustomButton = ({
         ...MyTypography.Helvetica16Normal,
       }}
     >
-      <h4 style={{ ...MyTypography.Helvetica14Normal }}>{label}</h4>
+      <h4 style={{ ...MyTypography.Helvetica14Normal, color: MyColors.bg }}>
+        {label}
+      </h4>
     </div>
   );
 };

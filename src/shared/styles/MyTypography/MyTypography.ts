@@ -19,6 +19,11 @@ export const MyTypography = {
     fontWeight: 500,
     fontSize: 14,
   },
+  Helvetica14Medium: {
+    fontFamily: "helvetica",
+    fontWeight: 400,
+    fontSize: 14,
+  },
   Helvetica16Normal: {
     fontFamily: "helvetica",
     fontWeight: 380,

@@ -4,14 +4,24 @@ import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { CustomButton } from "@/shared/widgets/customButton";
 import timestamp2dm from "@/shared/tools/timestamp2dm";
 import timestamp2year from "@/shared/tools/timestamp2year";
+import { useRouter } from "next/navigation";
 
-export default function EventCard({ event }: { event: GameEvent }) {
+export default function EventCard({
+  event,
+  fullWidth = false,
+}: {
+  fullWidth?: boolean;
+  event: GameEvent;
+}) {
   const startTime = new Date(Number(event.startTime) * 1000);
   const endTime = new Date(Number(event.endTime));
+
+  const router = useRouter();
+
   return (
     <div
       style={{
-        width: "32%",
+        width: fullWidth ? "100%" : "32%",
       }}
     >
       <div
@@ -66,7 +76,12 @@ export default function EventCard({ event }: { event: GameEvent }) {
             {event.prize} $
           </h3>
         </div>
-        <CustomButton onClick={() => {}} label={"Подробнее"}></CustomButton>
+        <CustomButton
+          onClick={() => {
+            router.push(`/event/${event.id}`);
+          }}
+          label={"Подробнее"}
+        ></CustomButton>
       </div>
     </div>
   );

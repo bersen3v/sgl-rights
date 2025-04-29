@@ -1,14 +1,20 @@
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
-import SearchIcon from "../../../../public/icons/search.svg";
-export default function SearchInput() {
+
+export default function CustomInput({
+  bgColor = MyColors.bg2,
+  placeholder = "",
+}: {
+  placeholder?: string;
+  bgColor?: string;
+}) {
   return (
     <div
       style={{
         display: "flex",
         height: 50,
         width: "100%",
-        backgroundColor: MyColors.bg2,
+        backgroundColor: bgColor,
         borderRadius: MyBordersRadius.r15,
         padding: MySpacing.s10,
         alignItems: "center",
@@ -17,12 +23,13 @@ export default function SearchInput() {
       }}
     >
       <input
-        placeholder="Поиск"
+        type="number"
+        placeholder={placeholder}
         color={MyColors.white}
         style={{
           ...MyTypography.Helvetica14Medium,
           caretColor: MyColors.white,
-          color: MyColors.white,
+          color: MyColors.green,
           display: "flex",
           height: "100%",
           width: "100%",
@@ -31,7 +38,6 @@ export default function SearchInput() {
           backgroundColor: "transparent",
         }}
       ></input>
-      <SearchIcon width={28} height={24}></SearchIcon>
     </div>
   );
 }

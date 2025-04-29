@@ -4,4 +4,5 @@ export const MyColors = {
   bg3: "#505050",
   white: "white",
   green: "#E2FF31",
+  grey: "#9E9E9E",
 };

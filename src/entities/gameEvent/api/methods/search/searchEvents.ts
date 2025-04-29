@@ -2,14 +2,14 @@ import { baseUrl } from "@/shared/network/config/baseUrl";
 import { GameEvent } from "../../../model/gameEvent";
 
 export type SearchEventParams = {
-  type: "all" | "old" | "future";
+  type: number;
   disciplinesIds: number[];
   managersIds: number[];
   developersIds: number[];
   prizeMinLimit: number;
   prizeMaxLimit: number;
-  startTime: string;
-  endTime: string;
+  startTime: number;
+  endTime: number;
 };
 
 export default async function searchEvents(
