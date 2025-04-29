@@ -1,5 +1,3 @@
-import useRequest from "@/shared/network/hooks/useRequest";
-import { gameEventApiManager } from "@/entities/gameEvent/api/gameEventApiManager";
 import { MySpacing } from "@/shared/styles";
 import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
 import EventActions from "../components/eventActions";

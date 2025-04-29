@@ -2,10 +2,6 @@
 
 import useRequest from "@/shared/network/hooks/useRequest";
 import { gameEventApiManager } from "@/entities/gameEvent/api/gameEventApiManager";
-import { MySpacing } from "@/shared/styles";
-import InfoBoxes from "./components/infoBoxes";
-import EventPageHeader from "./components/eventPageHeader";
-import EventActions from "./components/eventActions";
 import EventPageDesktopView from "./views/eventPageDesktopView";
 import EventPageMobileView from "./views/eventPageMobileView";
 

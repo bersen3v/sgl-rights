@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 // import Select from "react-select";
-import makeAnimated from "react-select/animated";
-import Select, { MultiValue, SingleValue } from "react-select";
+import Select from "react-select";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import useCustomSelect from "./hooks/useCustomSelect";
 

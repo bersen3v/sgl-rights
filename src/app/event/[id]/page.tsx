@@ -1,7 +1,3 @@
-import { MyColors } from "@/shared/styles";
-import InfoBox from "./components/infoBox";
-import useRequest from "@/shared/network/hooks/useRequest";
-import { gameEventApiManager } from "@/entities/gameEvent/api/gameEventApiManager";
 import EventPageView from "./eventPageView";
 
 export default async function EventPage({

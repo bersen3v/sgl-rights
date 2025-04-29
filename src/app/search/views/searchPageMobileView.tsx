@@ -1,6 +1,4 @@
 "use client";
-import { MySpacing } from "@/shared/styles";
-
 import useSearch from "../hooks/useSearch";
 import SearchPageFilters from "../components/searchPageFilters";
 import EventsScroll from "@/shared/widgets/eventsScroll/eventsScroll";

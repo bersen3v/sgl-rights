@@ -1,4 +1,3 @@
-import { MySpacing } from "@/shared/styles";
 import FiltersBox from "@/shared/widgets/filtersBox/filtersBox";
 import useCustomFilters from "@/shared/widgets/filtersBox/hooks/useCustomFilters";
 

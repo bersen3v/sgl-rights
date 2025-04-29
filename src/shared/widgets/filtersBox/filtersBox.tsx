@@ -1,8 +1,5 @@
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
-
-import useRequest from "@/shared/network/hooks/useRequest";
-import { filtersApiManager } from "@/entities/filters/api/filtersApiManager";
-import { Filters, InitViewModeFilter } from "@/entities/filters/model/filters";
+import { InitViewModeFilter } from "@/entities/filters/model/filters";
 import SearchInput from "../searchInput/searchInput";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import CustomSelect from "../customSelect/customSelect";
