@@ -1,6 +1,7 @@
 import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
+import Image from "next/image";
 
 export default function EventPageHeader({
   event,
@@ -11,13 +12,14 @@ export default function EventPageHeader({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: direction }}>
-      <img
+      <Image
         style={{
           width: direction == "column" ? "100%" : "40%",
           borderRadius: MyBordersRadius.r20,
           objectFit: "cover",
         }}
         src={event.previewPhoto}
+        alt={"фото эвента"}
       />
       <div
         style={{

@@ -5,6 +5,7 @@ import { CustomButton } from "@/shared/widgets/customButton";
 import timestamp2dm from "@/shared/tools/timestamp2dm";
 import timestamp2year from "@/shared/tools/timestamp2year";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function EventCard({
   event,
@@ -33,7 +34,7 @@ export default function EventCard({
           padding: MySpacing.s10,
         }}
       >
-        <img
+        <Image
           style={{
             width: "100%",
             height: "50%",
@@ -41,6 +42,7 @@ export default function EventCard({
             objectFit: "cover",
           }}
           src={event.previewPhoto}
+          alt={"ПРевью эвента"}
         />
         <div style={{ padding: MySpacing.s5 }}>
           <h2

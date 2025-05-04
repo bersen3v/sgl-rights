@@ -8,12 +8,13 @@ import useCustomFilters from "./hooks/useCustomFilters";
 
 export default function FiltersBox({
   filtersController,
+  isMobileView = false,
 }: {
   filtersController: ReturnType<typeof useCustomFilters>;
+  isMobileView?: boolean;
 }) {
   return (
     <>
-      <SearchInput></SearchInput>
       <div
         style={{
           display: "flex",

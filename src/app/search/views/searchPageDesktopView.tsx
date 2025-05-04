@@ -4,6 +4,7 @@ import { MySpacing } from "@/shared/styles";
 import useSearch from "../hooks/useSearch";
 import SearchPageFilters from "../components/searchPageFilters";
 import EventsScroll from "@/shared/widgets/eventsScroll/eventsScroll";
+import SearchInput from "@/shared/widgets/searchInput/searchInput";
 
 export default function SearchPageDesktopView({
   searchController,
@@ -23,6 +24,7 @@ export default function SearchPageDesktopView({
           paddingBottom: 20,
         }}
       >
+        <SearchInput></SearchInput>
         <SearchPageFilters
           filtersController={searchController.filtersController}
         ></SearchPageFilters>
