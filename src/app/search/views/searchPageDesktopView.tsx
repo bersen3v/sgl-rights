@@ -42,7 +42,7 @@ export default function SearchPageDesktopView({
           alignItems: "flex-start",
         }}
       >
-        <EventsScroll events={searchController.events}></EventsScroll>;
+        <EventsScroll events={searchController.events}></EventsScroll>
       </div>
     </>
   );

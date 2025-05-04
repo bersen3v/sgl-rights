@@ -40,6 +40,7 @@ export default function SearchPageMobileView({
       {isFilterOpened ? (
         <div style={{ display: "flex" }}>
           <SearchPageFilters
+            onDoneMobileClick={() => setIsFilterOpened(false)}
             isMobileView
             filtersController={searchController.filtersController}
           ></SearchPageFilters>

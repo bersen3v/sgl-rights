@@ -1,5 +1,7 @@
 import { MyBordersRadius, MyColors } from "@/shared/styles";
 import { Videos } from "next/dist/lib/metadata/types/metadata-types";
+import Image from "next/image";
+import FilterIcon from "../../../../public/icons/filter.svg";
 
 export default function OpenFiltersButton({
   onClick,
@@ -19,7 +21,7 @@ export default function OpenFiltersButton({
         borderRadius: MyBordersRadius.r15,
       }}
     >
-      x
+      <FilterIcon stroke={MyColors.grey}></FilterIcon>
     </div>
   );
 }

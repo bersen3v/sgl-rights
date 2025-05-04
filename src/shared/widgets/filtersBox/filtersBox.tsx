@@ -5,13 +5,16 @@ import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import CustomSelect from "../customSelect/customSelect";
 import CustomInput from "../customInput/customInput";
 import useCustomFilters from "./hooks/useCustomFilters";
+import { CustomButton } from "../customButton";
 
 export default function FiltersBox({
   filtersController,
   isMobileView = false,
+  onDoneMobileClick = () => {},
 }: {
   filtersController: ReturnType<typeof useCustomFilters>;
   isMobileView?: boolean;
+  onDoneMobileClick?: () => void;
 }) {
   return (
     <>
@@ -93,6 +96,14 @@ export default function FiltersBox({
           ></div>
           <CustomInput bgColor={MyColors.bg3} placeholder="До"></CustomInput>
         </div>
+        {isMobileView && (
+          <CustomButton
+            onClick={() => {
+              onDoneMobileClick();
+            }}
+            label={"Применить"}
+          ></CustomButton>
+        )}
       </div>
     </>
   );
