@@ -12,7 +12,12 @@ export default function SearchPageDesktopView({
   searchController: ReturnType<typeof useSearch>;
 }) {
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        gap: MySpacing.s20,
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -34,9 +39,8 @@ export default function SearchPageDesktopView({
         style={{
           display: "flex",
           width: "75%",
-          flexWrap: "wrap",
           gap: MySpacing.s10,
-          overflowY: "auto",
+          overflow: "auto",
           scrollbarWidth: "none",
           justifyContent: "flex-start",
           alignItems: "flex-start",
@@ -44,6 +48,6 @@ export default function SearchPageDesktopView({
       >
         <EventsScroll events={searchController.events}></EventsScroll>
       </div>
-    </>
+    </div>
   );
 }

@@ -49,9 +49,12 @@ export default function SearchPageMobileView({
         <div
           style={{
             display: "flex",
-            overflowY: "auto",
+            width: "100%",
+            overflow: "auto",
             scrollbarWidth: "none",
             paddingBottom: 0,
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
           }}
         >
           <EventsScroll

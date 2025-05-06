@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { MySpacing } from "@/shared/styles";
+import Image from "next/image";
 
 const helvetica = localFont({
   src: [

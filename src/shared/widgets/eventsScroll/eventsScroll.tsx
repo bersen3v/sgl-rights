@@ -13,6 +13,7 @@ export default function EventsScroll({
     <div
       style={{
         display: "flex",
+        height: fullWidth ? 1000 : 100,
         width: "100%",
         flexWrap: "wrap",
         gap: MySpacing.s10,
