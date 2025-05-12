@@ -1,7 +1,9 @@
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import SearchIcon from "../../../../public/icons/search.svg";
+import { useIntl } from "react-intl";
 export default function SearchInput() {
+  const intl = useIntl();
   return (
     <div
       style={{
@@ -17,7 +19,7 @@ export default function SearchInput() {
       }}
     >
       <input
-        placeholder="Поиск"
+        placeholder={intl.formatMessage({ id: "search" })}
         color={MyColors.white}
         style={{
           ...MyTypography.Helvetica14Medium,

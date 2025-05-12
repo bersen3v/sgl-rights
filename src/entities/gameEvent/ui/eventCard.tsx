@@ -1,10 +1,10 @@
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { GameEvent } from "../model/gameEvent";
-import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { CustomButton } from "@/shared/widgets/customButton";
-import timestamp2dm from "@/shared/tools/timestamp2dm";
-import timestamp2year from "@/shared/tools/timestamp2year";
 import { useRouter } from "next/navigation";
+import { useIntl } from "react-intl";
+import EventCardText from "./components/eventCardText";
+import EventPreviewImage from "./components/eventPreviewImage";
 
 export default function EventCard({
   event,
@@ -13,10 +13,8 @@ export default function EventCard({
   fullWidth?: boolean;
   event: GameEvent;
 }) {
-  const startTime = new Date(Number(event.startTime) * 1000);
-  const endTime = new Date(Number(event.endTime));
-
   const router = useRouter();
+  const intl = useIntl();
 
   return (
     <div
@@ -33,55 +31,13 @@ export default function EventCard({
           padding: MySpacing.s10,
         }}
       >
-        <img
-          style={{
-            width: "100%",
-            height: "50%",
-            borderRadius: MyBordersRadius.r10,
-            objectFit: "cover",
-          }}
-          src={event.previewPhoto}
-          alt={"Превью эвента"}
-        />
-        <div style={{ padding: MySpacing.s5 }}>
-          <h2
-            style={{ ...MyTypography.Helvetica19Medium, color: MyColors.white }}
-          >
-            {event.name}
-          </h2>
-
-          <div
-            style={{
-              paddingTop: MySpacing.s10,
-              paddingBottom: MySpacing.s10,
-              gap: MySpacing.s5,
-            }}
-          >
-            <h3
-              style={{ ...MyTypography.Helvetica15Thin, color: MyColors.white }}
-            >
-              {event.discipline}
-            </h3>
-            <h3
-              style={{ ...MyTypography.Helvetica15Thin, color: MyColors.white }}
-            >
-              {timestamp2dm({ timestamp: event.startTime })} -{" "}
-              {timestamp2dm({ timestamp: event.endTime })} (
-              {timestamp2year({ timestamp: event.endTime })})
-            </h3>
-          </div>
-
-          <h3
-            style={{ ...MyTypography.Helvetica19Medium, color: MyColors.white }}
-          >
-            {event.prize} $
-          </h3>
-        </div>
+        <EventPreviewImage event={event}></EventPreviewImage>
+        <EventCardText event={event}></EventCardText>
         <CustomButton
           onClick={() => {
             router.push(`/event/${event.id}`);
           }}
-          label={"Подробнее"}
+          label={intl.formatMessage({ id: "more" })}
         ></CustomButton>
       </div>
     </div>

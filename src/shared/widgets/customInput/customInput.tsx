@@ -1,12 +1,15 @@
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
+import { HTMLInputTypeAttribute } from "react";
 
 export default function CustomInput({
   bgColor = MyColors.bg2,
   placeholder = "",
+  type = "text",
 }: {
   placeholder?: string;
   bgColor?: string;
+  type?: HTMLInputTypeAttribute | undefined;
 }) {
   return (
     <div
@@ -23,7 +26,7 @@ export default function CustomInput({
       }}
     >
       <input
-        type="number"
+        type={type}
         placeholder={placeholder}
         color={MyColors.white}
         style={{

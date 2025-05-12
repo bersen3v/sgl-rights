@@ -3,5 +3,5 @@ export default function SearchPageLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <section>{children}</section>;
+  return <main style={{ display: "flex", height: "100%" }}>{children}</main>;
 }

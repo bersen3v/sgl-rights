@@ -3,6 +3,7 @@ import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
 import EventActions from "../components/eventActions";
 import InfoBoxes from "../components/infoBoxes";
 import EventPageHeader from "../components/eventPageHeader";
+import CustomBackButton from "@/shared/widgets/customBackButton/customBackButton";
 
 export default function EventPageDesktopView({ event }: { event: GameEvent }) {
   return (
@@ -16,12 +17,13 @@ export default function EventPageDesktopView({ event }: { event: GameEvent }) {
         scrollbarWidth: "none",
       }}
     >
+      <CustomBackButton></CustomBackButton>
       <EventPageHeader event={event}></EventPageHeader>
       <div style={{ display: "flex", gap: MySpacing.s10 }}>
         <div
           style={{
             display: "flex",
-            width: "75%",
+            minWidth: "75%",
             flexDirection: "column",
             gap: MySpacing.s10,
           }}
@@ -32,7 +34,7 @@ export default function EventPageDesktopView({ event }: { event: GameEvent }) {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "25%",
+            minWidth: "25%",
             gap: MySpacing.s10,
           }}
         >

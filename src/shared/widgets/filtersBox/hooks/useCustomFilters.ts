@@ -7,12 +7,14 @@ import useCustomSelect from "../../customSelect/hooks/useCustomSelect";
 import useRequest from "@/shared/network/hooks/useRequest";
 import { filtersApiManager } from "@/entities/filters/api/filtersApiManager";
 import { useEffect, useState } from "react";
+import { useIntl } from "react-intl";
 
 export default function useCustomFilters({
   onChange,
 }: {
   onChange: () => void;
 }) {
+  const intl = useIntl();
   const [filters, setFilters] = useState<Filters>(InitFilters);
 
   const [filtersRequest, reloadFiltersRequest] = useRequest(
@@ -27,7 +29,12 @@ export default function useCustomFilters({
   }, [filtersRequest]);
 
   const viewModeController = useCustomSelect({
-    options: filters.viewMode,
+    options: filters.viewMode.map((option) => {
+      return {
+        value: option.value,
+        label: intl.formatMessage({ id: option.label }),
+      };
+    }),
     onChange: onChange,
   });
 

@@ -4,8 +4,10 @@ import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import timestamp2dm from "@/shared/tools/timestamp2dm";
 import timestamp2year from "@/shared/tools/timestamp2year";
 import { CustomButton } from "@/shared/widgets/customButton";
+import { useIntl } from "react-intl";
 
 export default function TranslationLink({ event }: { event: GameEvent }) {
+  const intl = useIntl();
   return (
     <div
       style={{
@@ -27,10 +29,13 @@ export default function TranslationLink({ event }: { event: GameEvent }) {
         }}
       >
         <h4 style={{ ...MyTypography.Helvetica19Medium }}>
-          Ссылка на трансляцию
+          {intl.formatMessage({ id: "link_to_the_broadcast" })}
         </h4>
       </div>
-      <CustomButton onClick={() => {}} label={"Скопировать"}></CustomButton>
+      <CustomButton
+        onClick={() => {}}
+        label={intl.formatMessage({ id: "copy" })}
+      ></CustomButton>
     </div>
   );
 }

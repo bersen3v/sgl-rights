@@ -15,6 +15,7 @@ export default function SearchPageDesktopView({
     <div
       style={{
         display: "flex",
+        flex: 1,
         gap: MySpacing.s20,
       }}
     >

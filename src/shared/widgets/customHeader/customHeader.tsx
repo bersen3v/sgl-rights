@@ -1,15 +1,24 @@
-import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
-import ProfileIcon from "../../../../public/icons/profile.svg";
+import { MySpacing } from "@/shared/styles";
 
-export default function CustomHeader() {
+import ProfileButton from "./components/profileButton";
+import LanguageSelect from "./components/languageSelect";
+
+export default function CustomHeader({
+  locale,
+  setLocale,
+}: {
+  locale: string;
+  setLocale: (text: string) => void;
+}) {
   return (
     <div
       style={{
         display: "flex",
         flexGrow: 0,
         flexDirection: "row",
-        padding: MySpacing.s15,
-        paddingBottom: 0,
+        padding: MySpacing.s25,
+        paddingBottom: MySpacing.s10,
+        paddingTop: MySpacing.s10,
         justifyContent: "space-between",
         alignItems: "center",
       }}
@@ -23,28 +32,8 @@ export default function CustomHeader() {
       ></img>
 
       <div style={{ display: "flex", gap: MySpacing.s10, height: "100%" }}>
-        <div
-          style={{
-            display: "flex",
-            height: "100%",
-            backgroundColor: MyColors.bg2,
-            padding: MySpacing.s10,
-            borderRadius: MyBordersRadius.r10,
-          }}
-        >
-          ru
-        </div>
-        <div
-          style={{
-            display: "flex",
-            height: "100%",
-            backgroundColor: MyColors.bg2,
-            padding: MySpacing.s10,
-            borderRadius: MyBordersRadius.r10,
-          }}
-        >
-          <ProfileIcon></ProfileIcon>
-        </div>
+        <LanguageSelect locale={locale} setLocale={setLocale}></LanguageSelect>
+        <ProfileButton></ProfileButton>
       </div>
     </div>
   );

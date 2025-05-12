@@ -4,8 +4,10 @@ import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import timestamp2dm from "@/shared/tools/timestamp2dm";
 import timestamp2year from "@/shared/tools/timestamp2year";
 import { CustomButton } from "@/shared/widgets/customButton";
+import { useIntl } from "react-intl";
 
 export default function GetOfferButton({ event }: { event: GameEvent }) {
+  const intl = useIntl();
   return (
     <div
       style={{
@@ -43,7 +45,7 @@ export default function GetOfferButton({ event }: { event: GameEvent }) {
       </div>
       <CustomButton
         onClick={() => {}}
-        label={"Коммерческое предложение"}
+        label={intl.formatMessage({ id: "commercial_proposal" })}
       ></CustomButton>
     </div>
   );

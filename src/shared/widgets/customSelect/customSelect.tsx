@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
 // import Select from "react-select";
-import Select from "react-select";
+import Select, { MultiValue, SingleValue } from "react-select";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import useCustomSelect from "./hooks/useCustomSelect";
+import { useIntl } from "react-intl";
 
 export type OptionType = { value: number; label: string };
 export type OptionsType = OptionType[];
@@ -19,8 +20,6 @@ export default function CustomSelect({
   defaultValue?: undefined | OptionType;
   customSelectController: ReturnType<typeof useCustomSelect>;
 }) {
-  // const [selected, setSelected] = useState<OptionsType>();
-
   return (
     <Select
       value={customSelectController.selected}

@@ -13,9 +13,8 @@ export default function SearchPage() {
   return (
     <div
       style={{
-        overflow: "hidden",
         display: "flex",
-        height: "100vh",
+        height: "100%",
         flexDirection: "column",
         padding: 20,
         paddingBottom: 0,
@@ -23,10 +22,7 @@ export default function SearchPage() {
         gap: MySpacing.s15,
       }}
     >
-      <div style={{ flexGrow: 0 }}>
-        <CustomHeader></CustomHeader>
-      </div>
-      <div style={{ flexGrow: 1, display: "flex" }}>
+      <div style={{ display: "flex", flex: 1 }}>
         {width > 800 ? (
           <SearchPageDesktopView
             searchController={searchController}

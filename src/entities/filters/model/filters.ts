@@ -1,4 +1,5 @@
 import { OptionsType } from "@/shared/widgets/customSelect/customSelect";
+import { useIntl } from "react-intl";
 
 export type Filters = {
   viewMode: OptionsType;
@@ -15,6 +16,6 @@ export const InitFilters = {
 };
 
 export const InitViewModeFilter = {
-  label: "Все",
+  label: "all",
   value: 1,
 };

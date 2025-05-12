@@ -1,6 +1,8 @@
 import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
+import useCurrentLocale from "@/i18n/useCurrentLocale";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
+import { useIntl } from "react-intl";
 
 export default function EventPageHeader({
   event,
@@ -9,6 +11,7 @@ export default function EventPageHeader({
   event: GameEvent;
   direction?: "row" | "column";
 }) {
+  const { currentLocale } = useCurrentLocale();
   return (
     <div style={{ display: "flex", flexDirection: direction }}>
       <img
@@ -28,12 +31,16 @@ export default function EventPageHeader({
           gap: MySpacing.s10,
         }}
       >
-        <h1 style={{ ...MyTypography.Helvetica22Normal }}>{event.name}</h1>
+        <h1 style={{ ...MyTypography.Helvetica22Normal }}>
+          {event.name[currentLocale]}
+        </h1>
         <div>
           <h3 style={{ ...MyTypography.Helvetica16Normal }}>
             {event.discipline}
           </h3>
-          <h3 style={{ ...MyTypography.Helvetica16Normal }}>{event.place}</h3>
+          <h3 style={{ ...MyTypography.Helvetica16Normal }}>
+            {event.place[currentLocale]}
+          </h3>
         </div>
         <h3
           style={{ ...MyTypography.Helvetica19Medium, color: MyColors.green }}

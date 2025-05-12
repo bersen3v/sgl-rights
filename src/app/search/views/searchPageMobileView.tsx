@@ -18,8 +18,10 @@ export default function SearchPageMobileView({
     <div
       style={{
         display: "flex",
+        flex: 1,
         flexDirection: "column",
         gap: MySpacing.s10,
+        height: "100%",
       }}
     >
       <div

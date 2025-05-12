@@ -6,6 +6,10 @@ import CustomSelect from "../customSelect/customSelect";
 import CustomInput from "../customInput/customInput";
 import useCustomFilters from "./hooks/useCustomFilters";
 import { CustomButton } from "../customButton";
+import { useIntl } from "react-intl";
+import FilterSelects from "./components/filterSelects";
+import FiltersHeader from "./components/filtersHeader";
+import PriceFilter from "./components/priceFilter";
 
 export default function FiltersBox({
   filtersController,
@@ -28,74 +32,10 @@ export default function FiltersBox({
           gap: MySpacing.s10,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            padding: MySpacing.s5,
-          }}
-        >
-          <h3
-            style={{
-              ...MyTypography.Helvetica14Medium,
-              color: MyColors.grey,
-            }}
-          >
-            Фильтры
-          </h3>
-          <h3
-            onClick={() => {
-              filtersController.clear();
-            }}
-            style={{
-              ...MyTypography.Helvetica14Medium,
-              color: MyColors.grey,
-            }}
-          >
-            Сбросить
-          </h3>
-        </div>
-        <CustomSelect
-          placeholder={"Вид"}
-          isMulti={false}
-          customSelectController={filtersController.viewModeController}
-          defaultValue={InitViewModeFilter}
-        ></CustomSelect>
-        <CustomSelect
-          placeholder={"Дисциплина"}
-          customSelectController={filtersController.disciplinesController}
-        ></CustomSelect>
-        <CustomSelect
-          placeholder={"Организатор"}
-          customSelectController={filtersController.managersController}
-        ></CustomSelect>
-        <CustomSelect
-          placeholder={"Разработчик"}
-          customSelectController={filtersController.developersController}
-        ></CustomSelect>
+        <FiltersHeader filtersController={filtersController}></FiltersHeader>
+        <FilterSelects filtersController={filtersController}></FilterSelects>
+        <PriceFilter></PriceFilter>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <CustomInput bgColor={MyColors.bg3} placeholder="От"></CustomInput>
-          <div
-            style={{
-              display: "flex",
-              backgroundColor: MyColors.grey,
-              width: 30,
-              height: 2,
-              margin: MySpacing.s5,
-              borderRadius: MyBordersRadius.r30,
-            }}
-          ></div>
-          <CustomInput bgColor={MyColors.bg3} placeholder="До"></CustomInput>
-        </div>
         {isMobileView && (
           <CustomButton
             onClick={() => {
