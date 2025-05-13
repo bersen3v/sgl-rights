@@ -2,6 +2,7 @@ import { MySpacing } from "@/shared/styles";
 
 import ProfileButton from "./components/profileButton";
 import LanguageSelect from "./components/languageSelect";
+import { useRouter } from "next/navigation";
 
 export default function CustomHeader({
   locale,
@@ -10,6 +11,7 @@ export default function CustomHeader({
   locale: string;
   setLocale: (text: string) => void;
 }) {
+  const router = useRouter();
   return (
     <div
       style={{
@@ -24,6 +26,9 @@ export default function CustomHeader({
       }}
     >
       <img
+        onClick={() => {
+          router.push("/");
+        }}
         src="/icons/logo.png"
         style={{
           height: 30,

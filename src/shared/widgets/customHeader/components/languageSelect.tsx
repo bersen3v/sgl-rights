@@ -1,5 +1,6 @@
 import { LOCALES } from "@/i18n/locales";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
+import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { ChangeEvent } from "react";
 
 export default function LanguageSelect({
@@ -28,6 +29,8 @@ export default function LanguageSelect({
         style={{
           borderWidth: 0,
           outline: "none",
+          ...MyTypography.Helvetica14Medium,
+          color: MyColors.grey,
         }}
         value={locale}
         onChange={(event: ChangeEvent<HTMLSelectElement>) => {

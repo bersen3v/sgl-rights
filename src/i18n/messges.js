@@ -24,8 +24,12 @@ export const messages = {
     open: 'Open',
     link_to_the_broadcast: 'Link to the broadcast',
     copy: 'Copy',
-    back: 'Back'
+    back: 'Back',
 
+    //auth
+    login: 'login',
+    password: 'password',
+    entry: 'entry',
   },
   [LOCALES.RUSSIAN]: {
      // главная
@@ -49,7 +53,12 @@ export const messages = {
      open: 'Открыть',
      link_to_the_broadcast: 'Ссылка на трансляцию',
      copy: 'Скопировать',
-     back: 'Назад'
+     back: 'Назад',
+
+     //auth
+    login: 'Логин',
+    password: 'Пароль',
+    entry: 'Войти',
   },
   [LOCALES.KAZAKH]: {
      // главная
@@ -73,6 +82,11 @@ export const messages = {
      open: 'открыть',
      link_to_the_broadcast: 'ссылка на трансляцию',
      copy: 'скопировать',
-     back: 'Yfpfl'
+     back: 'Yfpfl',
+
+     //auth
+    login: 'Логин',
+    password: 'Пароль',
+    entry: 'Войти',
   },
 }

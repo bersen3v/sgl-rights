@@ -1,9 +1,13 @@
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import CustomInput from "../../customInput/customInput";
 import { useIntl } from "react-intl";
+import useCustomInputController from "../../customInput/hooks/customInputController";
 
 export default function PriceFilter() {
   const intl = useIntl();
+  const fromController = useCustomInputController();
+  const beforeController = useCustomInputController();
+
   return (
     <>
       <div
@@ -16,6 +20,7 @@ export default function PriceFilter() {
         <CustomInput
           bgColor={MyColors.bg3}
           placeholder={intl.formatMessage({ id: "from" })}
+          controller={fromController}
         ></CustomInput>
         <div
           style={{
@@ -30,6 +35,7 @@ export default function PriceFilter() {
         <CustomInput
           bgColor={MyColors.bg3}
           placeholder={intl.formatMessage({ id: "before" })}
+          controller={beforeController}
         ></CustomInput>
       </div>
     </>

@@ -1,9 +1,48 @@
 "use client";
+import {
+  AuthUserAnswer,
+  AuthUserProps,
+} from "@/entities/user/api/methods/authUser";
+import { UserApiManager } from "@/entities/user/api/userApiManager";
+import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
 import { MySpacing } from "@/shared/styles";
 import { CustomButton } from "@/shared/widgets/customButton";
 import CustomInput from "@/shared/widgets/customInput/customInput";
+import useCustomInputController from "@/shared/widgets/customInput/hooks/customInputController";
+import { useRouter } from "next/navigation";
+import { useIntl } from "react-intl";
+import { useWindowSize } from "react-use";
 
 export default function AuthPage() {
+  const { width } = useWindowSize();
+  const router = useRouter();
+  const intl = useIntl();
+
+  const loginController = useCustomInputController();
+  const passwordController = useCustomInputController();
+
+  const [entryRequest, mutateEntryRequest] = useMutateRequest<
+    AuthUserAnswer,
+    AuthUserProps
+  >(UserApiManager.authUser, {
+    onSuccess: (id: AuthUserAnswer) => {
+      if (id) {
+        localStorage.setItem("userKey", id);
+        router.push(`/user/${id}`);
+      }
+    },
+    onFail: () => {},
+  });
+
+  const handleEntryClick = () => {
+    if (loginController.value !== "" && passwordController.value !== "") {
+      mutateEntryRequest({
+        login: loginController.value,
+        password: passwordController.value,
+      });
+    }
+  };
+
   return (
     <div
       style={{
@@ -12,6 +51,7 @@ export default function AuthPage() {
         alignItems: "center",
         height: "100%",
         width: "100%",
+        padding: MySpacing.s25,
       }}
     >
       <div
@@ -19,12 +59,24 @@ export default function AuthPage() {
           display: "flex",
           gap: MySpacing.s10,
           flexDirection: "column",
-          margin: "auto", // это центрирует содержимое
+          margin: "auto",
+
+          width: width > 800 ? "40%" : "100%",
         }}
       >
-        <CustomInput></CustomInput>
-        <CustomInput></CustomInput>
-        <CustomButton onClick={() => {}} label={"Войти"}></CustomButton>
+        <CustomInput
+          placeholder={intl.formatMessage({ id: "login" })}
+          controller={loginController}
+        ></CustomInput>
+        <CustomInput
+          placeholder={intl.formatMessage({ id: "password" })}
+          type="password"
+          controller={passwordController}
+        ></CustomInput>
+        <CustomButton
+          onClick={handleEntryClick}
+          label={intl.formatMessage({ id: "entry" })}
+        ></CustomButton>
       </div>
     </div>
   );

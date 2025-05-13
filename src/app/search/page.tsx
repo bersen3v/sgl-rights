@@ -16,7 +16,7 @@ export default function SearchPage() {
         display: "flex",
         height: "100%",
         flexDirection: "column",
-        padding: 20,
+        padding: MySpacing.s25,
         paddingBottom: 0,
         paddingTop: 0,
         gap: MySpacing.s15,

@@ -3,7 +3,7 @@ import useSearch from "../hooks/useSearch";
 import SearchPageFilters from "../components/searchPageFilters";
 import EventsScroll from "@/shared/widgets/eventsScroll/eventsScroll";
 import { useState } from "react";
-import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
+import { MySpacing } from "@/shared/styles";
 import SearchInput from "@/shared/widgets/searchInput/searchInput";
 import OpenFiltersButton from "../components/openFitersButton";
 

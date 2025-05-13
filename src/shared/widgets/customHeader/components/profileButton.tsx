@@ -6,7 +6,14 @@ export default function ProfileButton() {
   const router = useRouter();
   return (
     <div
-      onClick={() => router.push("/auth")}
+      onClick={() => {
+        const userKey = localStorage.getItem("userKey");
+        if (userKey) {
+          router.push(`/user/${userKey}`);
+          return;
+        }
+        router.push("/auth");
+      }}
       style={{
         display: "flex",
         height: "100%",
