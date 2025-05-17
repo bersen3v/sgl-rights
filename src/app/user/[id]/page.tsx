@@ -1,4 +1,4 @@
-import { UserApiManager } from "@/entities/user/api/userApiManager";
+import { userApiManager } from "@/entities/user/api/userApiManager";
 import useRequest from "@/shared/network/hooks/useRequest";
 import UserPageView from "./userPageView";
 

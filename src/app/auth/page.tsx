@@ -3,7 +3,8 @@ import {
   AuthUserAnswer,
   AuthUserProps,
 } from "@/entities/user/api/methods/authUser";
-import { UserApiManager } from "@/entities/user/api/userApiManager";
+import { userApiManager } from "@/entities/user/api/userApiManager";
+import { desktopMinWidth } from "@/shared/constants/adaptive";
 import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
 import { MySpacing } from "@/shared/styles";
 import { CustomButton } from "@/shared/widgets/customButton";
@@ -24,7 +25,7 @@ export default function AuthPage() {
   const [entryRequest, mutateEntryRequest] = useMutateRequest<
     AuthUserAnswer,
     AuthUserProps
-  >(UserApiManager.authUser, {
+  >(userApiManager.authUser, {
     onSuccess: (id: AuthUserAnswer) => {
       if (id) {
         localStorage.setItem("userKey", id);
@@ -61,7 +62,7 @@ export default function AuthPage() {
           flexDirection: "column",
           margin: "auto",
 
-          width: width > 800 ? "40%" : "100%",
+          width: width > desktopMinWidth ? "40%" : "100%",
         }}
       >
         <CustomInput

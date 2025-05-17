@@ -5,6 +5,7 @@ import { gameEventApiManager } from "@/entities/gameEvent/api/gameEventApiManage
 import EventPageDesktopView from "./views/eventPageDesktopView";
 import EventPageMobileView from "./views/eventPageMobileView";
 import { useWindowSize } from "react-use";
+import { desktopMinWidth } from "@/shared/constants/adaptive";
 
 export default function EventPageView({ eventId }: { eventId: number }) {
   const { width } = useWindowSize();
@@ -17,7 +18,7 @@ export default function EventPageView({ eventId }: { eventId: number }) {
     <div style={{ display: "flex", scrollbarWidth: "none", width: "100%" }}>
       {getEventRequest.isLoaded && !getEventRequest.isLoading ? (
         <>
-          {width > 800 ? (
+          {width > desktopMinWidth ? (
             <EventPageDesktopView
               event={getEventRequest.data}
             ></EventPageDesktopView>

@@ -30,6 +30,9 @@ export const messages = {
     login: 'login',
     password: 'password',
     entry: 'entry',
+
+    //profile
+    my_events: 'my events'
   },
   [LOCALES.RUSSIAN]: {
      // главная
@@ -59,6 +62,9 @@ export const messages = {
     login: 'Логин',
     password: 'Пароль',
     entry: 'Войти',
+
+    //profile
+    my_events: 'Мои события'
   },
   [LOCALES.KAZAKH]: {
      // главная
@@ -88,5 +94,8 @@ export const messages = {
     login: 'Логин',
     password: 'Пароль',
     entry: 'Войти',
+
+    //profile
+    my_events: 'Мои события'
   },
 }

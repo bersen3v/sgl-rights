@@ -1,7 +1,6 @@
 "use client";
+import Home from "./home/page";
 
-import SearchPage from "./search/page";
-
-export default function Home() {
-  return <SearchPage></SearchPage>;
+export default function Main() {
+  return <Home></Home>;
 }

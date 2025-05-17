@@ -4,7 +4,7 @@ import useSearch from "./hooks/useSearch";
 import SearchPageDesktopView from "./views/searchPageDesktopView";
 import SearchPageMobileView from "./views/searchPageMobileView";
 import { useWindowSize } from "react-use";
-import CustomHeader from "@/shared/widgets/customHeader/customHeader";
+import { desktopMinWidth } from "@/shared/constants/adaptive";
 
 export default function SearchPage() {
   const searchController = useSearch();
@@ -23,7 +23,7 @@ export default function SearchPage() {
       }}
     >
       <div style={{ display: "flex", flex: 1 }}>
-        {width > 800 ? (
+        {width > desktopMinWidth ? (
           <SearchPageDesktopView
             searchController={searchController}
           ></SearchPageDesktopView>
