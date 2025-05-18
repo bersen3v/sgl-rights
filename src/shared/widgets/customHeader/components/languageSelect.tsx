@@ -27,6 +27,7 @@ export default function LanguageSelect({
     >
       <select
         style={{
+          backgroundColor: MyColors.bg2,
           borderWidth: 0,
           outline: "none",
           ...MyTypography.Helvetica14Medium,
