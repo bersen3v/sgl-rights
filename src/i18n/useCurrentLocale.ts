@@ -1,6 +1,6 @@
 "use client";
 
-import { LocaleContext } from "@/app/layout";
+import { LocaleContext } from "@/shared/context/localeContext";
 import { useContext, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 

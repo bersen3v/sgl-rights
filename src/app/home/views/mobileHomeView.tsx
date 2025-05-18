@@ -2,6 +2,9 @@ import { MySpacing } from "@/shared/styles";
 import MainHomeText from "../components/mainHomeText";
 import HomeSearchButton from "../components/homeSearchButton";
 import Players from "../components/players";
+import CustomFooter from "@/shared/widgets/customFooter/customFooter";
+import MainHomePhoto from "../components/mainHomePhoto";
+import Partners from "../components/partners";
 
 export default function MobileHomeView() {
   return (
@@ -11,15 +14,19 @@ export default function MobileHomeView() {
         flex: 1,
         padding: MySpacing.s25,
         flexDirection: "column",
+        gap: MySpacing.s25,
       }}
     >
+      <MainHomePhoto isMobile></MainHomePhoto>
       <div
         style={{ display: "flex", gap: MySpacing.s15, flexDirection: "column" }}
       >
         <MainHomeText isMobile></MainHomeText>
         <HomeSearchButton isMobile></HomeSearchButton>
       </div>
-      <Players></Players>
+      <Players isMobile></Players>
+      <Partners></Partners>
+      {/* <CustomFooter></CustomFooter> */}
     </div>
   );
 }

@@ -5,9 +5,11 @@ import "./globals.css";
 import { messages } from "../i18n/messges";
 import CustomHeader from "@/shared/widgets/customHeader/customHeader";
 
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { LOCALES } from "@/i18n/locales";
 import I18nWrapper from "@/shared/widgets/i18nWrapper/i18nWrapper";
+
+import { LocaleContext } from "@/shared/context/localeContext";
 
 const helvetica = localFont({
   src: [
@@ -38,8 +40,6 @@ const helvetica = localFont({
     },
   ],
 });
-
-export const LocaleContext = createContext(LOCALES.ENGLISH);
 
 export default function RootLayout({
   children,

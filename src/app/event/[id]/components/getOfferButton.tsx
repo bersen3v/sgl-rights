@@ -4,10 +4,12 @@ import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import timestamp2dm from "@/shared/tools/timestamp2dm";
 import timestamp2year from "@/shared/tools/timestamp2year";
 import { CustomButton } from "@/shared/widgets/customButton";
+import { useRouter } from "next/navigation";
 import { useIntl } from "react-intl";
 
 export default function GetOfferButton({ event }: { event: GameEvent }) {
   const intl = useIntl();
+  const router = useRouter();
   return (
     <div
       style={{
@@ -44,7 +46,9 @@ export default function GetOfferButton({ event }: { event: GameEvent }) {
         </h4>
       </div>
       <CustomButton
-        onClick={() => {}}
+        onClick={() => {
+          router.push(`/comproposal/${event.id}`);
+        }}
         label={intl.formatMessage({ id: "commercial_proposal" })}
       ></CustomButton>
     </div>

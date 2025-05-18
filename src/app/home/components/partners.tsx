@@ -1,16 +1,16 @@
 import { MySpacing } from "@/shared/styles";
-import Player from "./player";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { useIntl } from "react-intl";
+import Player from "./player";
 
-export default function Players({ isMobile = false }: { isMobile?: boolean }) {
+export default function Partners({ isMobile = false }: { isMobile?: boolean }) {
   const intl = useIntl();
   return (
     <div
       style={{ display: "flex", flexDirection: "column", gap: MySpacing.s10 }}
     >
       <h1 style={{ ...MyTypography.Helvetica22Normal, padding: MySpacing.s10 }}>
-        {intl.formatMessage({ id: "team" })}
+        {intl.formatMessage({ id: "partners" })}
       </h1>
       <div
         style={{
@@ -20,14 +20,9 @@ export default function Players({ isMobile = false }: { isMobile?: boolean }) {
         }}
       >
         <Player
-          name={intl.formatMessage({ id: "dmitry_pislevich" })}
-          role={intl.formatMessage({ id: "ceo" })}
-          url={"/icons/dmitri_pislevich.jpg"}
-        ></Player>
-        <Player
-          name={intl.formatMessage({ id: "magzhan_sibitov" })}
-          role={intl.formatMessage({ id: "ceo" })}
-          url={"/icons/magzhan.jpg"}
+          name={intl.formatMessage({ id: "astana_hub" })}
+          role={intl.formatMessage({ id: "acselerator" })}
+          url={"/icons/ah_logo_50.png"}
         ></Player>
       </div>
     </div>
