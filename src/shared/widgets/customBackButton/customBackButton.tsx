@@ -11,8 +11,8 @@ export default function CustomBackButton() {
       <div
         style={{
           flexGrow: 0,
-          paddingLeft: MySpacing.s5,
-          paddingRight: MySpacing.s5,
+          // paddingLeft: MySpacing.s5,
+          // paddingRight: MySpacing.s5,
         }}
       >
         <CustomButton

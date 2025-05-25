@@ -11,7 +11,8 @@ export default function EventPageDesktopView({ event }: { event: GameEvent }) {
       style={{
         display: "flex",
         flexDirection: "column",
-        padding: MySpacing.s20,
+        padding: MySpacing.s25,
+        paddingTop: 0,
         gap: MySpacing.s10,
         overflowY: "auto",
         scrollbarWidth: "none",

@@ -21,7 +21,7 @@ export default function UserPageView({ userId }: { userId: string }) {
       {userInfoRequest.isLoading || !userInfoRequest.isLoaded ? (
         <div>грузится</div>
       ) : (
-        <div style={{ padding: MySpacing.s25 }}>
+        <div style={{ padding: MySpacing.s25, paddingTop: 0 }}>
           {width > desktopMinWidth ? (
             <UserPageDesktopView
               user={userInfoRequest.data}

@@ -25,7 +25,7 @@ export default function Players({ isMobile = false }: { isMobile?: boolean }) {
           url={"/icons/dmitri_pislevich.jpg"}
         ></Player>
         <Player
-          name={intl.formatMessage({ id: "magzhan_sibitov" })}
+          name={intl.formatMessage({ id: "magzhan_myazov" })}
           role={intl.formatMessage({ id: "ceo" })}
           url={"/icons/magzhan.jpg"}
         ></Player>

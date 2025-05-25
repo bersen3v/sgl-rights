@@ -1,20 +1,7 @@
 import { baseUrl } from "@/shared/network/config/baseUrl";
 import { GameEvent } from "../../../model/gameEvent";
 
-export type SearchEventParams = {
-  type: number;
-  disciplinesIds: number[];
-  managersIds: number[];
-  developersIds: number[];
-  prizeMinLimit: number;
-  prizeMaxLimit: number;
-  startTime: number;
-  endTime: number;
-};
-
-export default async function searchEvents(
-  searchParams: SearchEventParams
-): Promise<GameEvent[]> {
+export default async function getAllEvents(): Promise<GameEvent[]> {
   const path = baseUrl + "/searchEvents";
 
   const data = {

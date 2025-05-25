@@ -6,4 +6,5 @@ export type User = {
   company: string;
   mail: string;
   phone: string;
+  isAdmin: boolean;
 };

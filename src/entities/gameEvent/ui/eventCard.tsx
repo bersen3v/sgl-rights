@@ -9,9 +9,11 @@ import EventPreviewImage from "./components/eventPreviewImage";
 export default function EventCard({
   event,
   fullWidth = false,
+  isAdmin = false,
 }: {
   fullWidth?: boolean;
   event: GameEvent;
+  isAdmin?: boolean;
 }) {
   const router = useRouter();
   const intl = useIntl();
@@ -33,12 +35,41 @@ export default function EventCard({
       >
         <EventPreviewImage event={event}></EventPreviewImage>
         <EventCardText event={event}></EventCardText>
-        <CustomButton
-          onClick={() => {
-            router.push(`/event/${event.id}`);
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: MySpacing.s5,
           }}
-          label={intl.formatMessage({ id: "more" })}
-        ></CustomButton>
+        >
+          <CustomButton
+            onClick={() => {
+              router.push(`/event/${event.id}`);
+            }}
+            label={intl.formatMessage({ id: "more" })}
+          ></CustomButton>
+
+          {isAdmin ? (
+            <>
+              <CustomButton
+                onClick={() => {
+                  router.push(`/adminhome/manageEvents/editEvents/${event.id}`);
+                }}
+                label={"Редактировать"}
+              ></CustomButton>
+
+              <CustomButton
+                onClick={() => {
+                  router.push(`/event/${event.id}`);
+                }}
+                label={"Удалить"}
+              ></CustomButton>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );

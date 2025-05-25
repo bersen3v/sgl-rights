@@ -4,65 +4,67 @@ export const messages = {
   [LOCALES.ENGLISH]: {
     //home
     team: "Team",
-    dmitry_pislevich: "Dmitriy Pislevich",
-    magzhan_sibitov: "Magzhan Sibitov",
+    dmitry_pislevich: "Dmitry Pislevich",
+    magzhan_myazov: "Magzhan Myazov ",
     ceo: "CEO",
-    mainTitle: "We provide access to broadcasts of sports and esports events",
-    bookingEvents: "Booking events",
-    partners: 'Partners',
+    mainTitle: "We provide access to sports and esports event broadcasts",
+    bookingEvents: "Event booking",
+    partners: "Partners",
+    astana_hub: "Astana Hub",
+    acselerator: "Accelerator",
 
-    // главная
+    // main
     search: "Search",
-    more: "More",
+    more: "More details",
     filters: "Filters",
     reset: "Reset",
     all: "All",
-    coming: "Coming",
+    coming: "Upcoming",
     past: "Past",
     discipline: "Discipline",
-    manager: "Manager",
+    manager: "Organizer",
     developer: "Developer",
     from: "From",
     before: "Before",
-    astana_hub: 'Astana Hub',
-    acselerator: "Acselerator",
 
-    // подробнее о эвенте
+    // event details
     description: "Description",
-    commercial_proposal: "Commercial proposal",
-    event_website: "Event website",
+    commercial_proposal: "Commercial Proposal",
+    event_website: "Event Website",
     open: "Open",
-    link_to_the_broadcast: "Link to the broadcast",
+    link_to_the_broadcast: "Broadcast link",
     copy: "Copy",
     back: "Back",
 
-    //auth
-    login: "login",
-    password: "password",
-    entry: "entry",
+    // auth
+    login: "Login",
+    password: "Password",
+    entry: "Sign In",
 
-    //profile
-    my_events: "my events",
+    // profile
+    my_events: "My Events",
 
-    //comproposal
-    name: 'Name',
-    phone_number: 'Phone number',
-    comment: 'Comment',
-    send: 'Send',
-    comproposal_description: "Leave your contacts and the manager will contact you soon.",
-    comproposal_success_title: 'The application has been successfully submitted',
-    comproposal_success_description: 'Manager will contact you soon.'
+    // commercial proposal
+    name: "Name",
+    phone_number: "Phone Number",
+    comment: "Comment",
+    send: "Send",
+    comproposal_description:
+      "Leave your contact details and a manager will contact you shortly",
+    comproposal_success_title: "Request sent successfully",
+    comproposal_success_description: "A manager will contact you soon",
   },
   [LOCALES.RUSSIAN]: {
     //home
     team: "Команда",
     dmitry_pislevich: "Дмитрий Пислевич",
-    magzhan_sibitov: "Магжан Сибитов",
+    magzhan_myazov: "Магжан Мязов ",
     ceo: "CEO",
-    mainTitle: "Предоставляем доступ к трансляциям спортивных и киберспортивных событий",
+    mainTitle:
+      "Предоставляем доступ к трансляциям спортивных и киберспортивных событий",
     bookingEvents: "Бронирование событий",
-    partners: 'Партнеры',
-    astana_hub: 'Астана Хаб',
+    partners: "Партнеры",
+    astana_hub: "Астана Хаб",
     acselerator: "Акселератор",
 
     // главная
@@ -97,64 +99,66 @@ export const messages = {
     my_events: "Мои события",
 
     //comproposal
-    name: 'Имя',
-    phone_number: 'Номер телефона',
-    comment: 'Комментарий',
-    send: 'Отправить',
-    comproposal_description: "Оставьте свои контакты и в ближайшее время с вами свяжется менеджер",
-    comproposal_success_title: 'Заявка успешно отправлена',
-    comproposal_success_description: 'Скоро с вами свяжется менеджер'
+    name: "Имя",
+    phone_number: "Номер телефона",
+    comment: "Комментарий",
+    send: "Отправить",
+    comproposal_description:
+      "Оставьте свои контакты и в ближайшее время с вами свяжется менеджер",
+    comproposal_success_title: "Заявка успешно отправлена",
+    comproposal_success_description: "Скоро с вами свяжется менеджер",
   },
   [LOCALES.KAZAKH]: {
     //home
-    team: "Team",
-    dmitry_pislevich: "Dmitriy Pislevich",
-    magzhan_sibitov: "Magzhan Sibitov",
-    ceo: "CEO",
-    mainTitle: "We provide access to broadcasts of sports and esports events",
-    bookingEvents: "booking events",
-    partners: 'Партнеры',
-    astana_hub: 'Астана Хаб',
+    team: "Топ",
+    dmitry_pislevich: "Дмитрий Пислевич",
+    magzhan_myazov: "Магжан Мязов",
+    ceo: "Бас директор (CEO)",
+    mainTitle: "Спорт және киберспорт трансляцияларына қол жеткізуді ұсынамыз",
+    bookingEvents: "Іс-шараларды брондау",
+    partners: "Серіктестер",
+    astana_hub: "Astana Hub",
     acselerator: "Акселератор",
 
-    // главная
-    search: "поиск",
-    more: "подробнее",
-    filters: "фильтры",
-    reset: "сбросить",
-    all: "все",
-    coming: "будущие",
-    past: "прошедшие",
-    discipline: "дисциплины",
-    manager: "организаторы",
-    developer: "разработчики",
-    from: "от",
-    before: "до",
+    // main
+    search: "Іздеу",
+    more: "Толығырақ",
+    filters: "Сүзгілер",
+    reset: "Қалпына келтіру",
+    all: "Барлығы",
+    coming: "Келешек",
+    past: "Өткен",
+    discipline: "Тәртіп",
+    manager: "Ұйымдастырушы",
+    developer: "Әзірлеуші",
+    from: "Бастап",
+    before: "Дейін",
 
-    // подробнее о эвенте
-    description: "описание",
-    commercial_proposal: "коммерческое предложение",
-    event_website: "сайт события",
-    open: "открыть",
-    link_to_the_broadcast: "ссылка на трансляцию",
-    copy: "скопировать",
-    back: "Yfpfl",
+    // event details
+    description: "Сипаттама",
+    commercial_proposal: "Коммерциялық ұсыныс",
+    event_website: "Іс-шараның сайты",
+    open: "Ашу",
+    link_to_the_broadcast: "Трансляция сілтемесі",
+    copy: "Көшіру",
+    back: "Артқа",
 
-    //auth
+    // auth
     login: "Логин",
-    password: "Пароль",
-    entry: "Войти",
+    password: "Құпиясөз",
+    entry: "Кіру",
 
-    //profile
-    my_events: "Мои события",
+    // profile
+    my_events: "Менің іс-шараларым",
 
-    //comproposal
-    name: 'Name',
-    phone_number: 'Phone number',
-    comment: 'Comment',
-    send: 'Отправить',
-    comproposal_description: "Оставьте свои контакты и в ближайшее время с вами свяжется менеджер",
-    comproposal_success_title: 'The application has been successfully submitted',
-    comproposal_success_description: 'Manager will contact you soon.'
+    // commercial proposal
+    name: "Аты",
+    phone_number: "Телефон нөмірі",
+    comment: "Пікір",
+    send: "Жіберу",
+    comproposal_description:
+      "Байланыс мәліметтеріңізді қалдырыңыз, менеджер жақын арада хабарласады",
+    comproposal_success_title: "Өтінім сәтті жіберілді",
+    comproposal_success_description: "Менеджер сізбен жақын арада хабарласады",
   },
 };

@@ -3,9 +3,11 @@ import EventCard from "@/entities/gameEvent/ui/eventCard";
 import { MySpacing } from "@/shared/styles";
 
 export default function EventsScroll({
+  isAdmin = false,
   fullWidth = false,
   events,
 }: {
+  isAdmin?: boolean;
   fullWidth?: boolean;
   events: GameEvent[] | undefined;
 }) {
@@ -22,6 +24,7 @@ export default function EventsScroll({
       {events ? (
         [...events, ...events, ...events, ...events].map((event, index) => (
           <EventCard
+            isAdmin={isAdmin}
             fullWidth={fullWidth}
             event={event}
             key={index}

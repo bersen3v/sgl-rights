@@ -11,6 +11,7 @@ export default function EventPageMobileView({ event }: { event: GameEvent }) {
         display: "flex",
         flexDirection: "column",
         padding: MySpacing.s20,
+        paddingTop: 0,
         gap: MySpacing.s10,
       }}
     >
