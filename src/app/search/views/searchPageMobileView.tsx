@@ -31,7 +31,7 @@ export default function SearchPageMobileView({
           width: "100%",
         }}
       >
-        <SearchInput></SearchInput>
+        <SearchInput searchController={searchController}></SearchInput>
         <OpenFiltersButton
           onClick={() => {
             setIsFilterOpened(!isFilterOpened);

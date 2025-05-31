@@ -1,7 +1,9 @@
 import { baseUrl } from "@/shared/network/config/baseUrl";
+import postRequestWithResponse from "@/shared/network/methods/postRequestWithResponse";
+import { createQueryString } from "@/shared/tools/createQueryString";
 
 export type CreateEventParams = {
-  photoUrl: string;
+  photoUrlFile: File | undefined;
   startTime: number;
   endTime: number;
   nameRu: string;
@@ -16,13 +18,21 @@ export type CreateEventParams = {
   placeEn: string;
   placeKz: string;
   discipline: string;
-  prize: string;
+  prize: number;
 };
 
 export default async function createEvent(
   createEventParams: CreateEventParams
 ): Promise<boolean> {
-  const path = baseUrl + "/createEvent";
+  const params = createQueryString(createEventParams);
+  const path = baseUrl + `/createEvent?${params}`;
+
+  const formData = new FormData();
+  if (createEventParams.photoUrlFile) {
+    formData.append("photo", createEventParams.photoUrlFile);
+  }
+
+  const answer = await postRequestWithResponse(path, formData);
 
   const data = {
     result: true,

@@ -8,6 +8,7 @@ import useRequest from "@/shared/network/hooks/useRequest";
 import { filtersApiManager } from "@/entities/filters/api/filtersApiManager";
 import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
+import useCustomInputController from "../../customInput/hooks/customInputController";
 
 export default function useCustomFilters({
   onChange,
@@ -28,15 +29,15 @@ export default function useCustomFilters({
     }
   }, [filtersRequest]);
 
-  const viewModeController = useCustomSelect({
-    options: filters.viewMode.map((option) => {
-      return {
-        value: option.value,
-        label: intl.formatMessage({ id: option.label }),
-      };
-    }),
-    onChange: onChange,
-  });
+  // const viewModeController = useCustomSelect({
+  //   options: filters.viewMode.map((option) => {
+  //     return {
+  //       value: option.value,
+  //       label: intl.formatMessage({ id: option.label }),
+  //     };
+  //   }),
+  //   onChange: onChange,
+  // });
 
   const developersController = useCustomSelect({
     options: filters.developers,
@@ -53,18 +54,28 @@ export default function useCustomFilters({
     onChange: onChange,
   });
 
+  const fromDateController = useCustomInputController();
+  const beforeDateController = useCustomInputController();
+
+  const prizeMinController = useCustomInputController();
+  const prizeMaxController = useCustomInputController();
+
   const clear = () => {
-    viewModeController.setSelected(InitViewModeFilter);
+    // viewModeController.setSelected(InitViewModeFilter);
     managersController.setSelected([]);
     developersController.setSelected([]);
     disciplinesController.setSelected([]);
   };
 
   return {
-    viewModeController,
+    // viewModeController,
     developersController,
     disciplinesController,
     managersController,
+    fromDateController,
+    beforeDateController,
+    prizeMinController,
+    prizeMaxController,
     filtersRequest,
     clear,
   };

@@ -1,28 +1,37 @@
+import fetchStringFromUrl from "@/shared/network/methods/fetchStringFromUrl";
 import { Filters } from "../../model/filters";
+import { baseUrl } from "@/shared/network/config/baseUrl";
 
 export default async function getFilters(): Promise<Filters> {
-  const data = {
-    result: {
-      viewMode: [
-        { value: 1, label: "all" },
-        { value: 2, label: "coming" },
-        { value: 3, label: "past" },
-      ],
-      managers: [
-        { label: "Организатор 1", value: 1 },
-        { label: "Организатор 2", value: 2 },
-      ],
-      disciplines: [
-        { value: 1, label: "CS:GO" },
-        { value: 2, label: "DOTA" },
-      ],
-      developers: [
-        { value: 1, label: "Valve" },
-        { value: 2, label: "Steam" },
-      ],
-    },
+  const path = baseUrl + "/getEventsFilters";
+  const serverData = await fetchStringFromUrl(path);
+
+  const filters = serverData as {
+    managers: string[];
+    developers: string[];
+    disciplines: string[];
   };
 
-  const filters = (data as { result: Filters }).result;
-  return filters;
+  const data = {
+    managers: filters.managers.map((val, ind) => {
+      return {
+        value: ind,
+        label: val,
+      };
+    }),
+    disciplines: filters.disciplines.map((val, ind) => {
+      return {
+        value: ind,
+        label: val,
+      };
+    }),
+    developers: filters.developers.map((val, ind) => {
+      return {
+        value: ind,
+        label: val,
+      };
+    }),
+  };
+
+  return data;
 }

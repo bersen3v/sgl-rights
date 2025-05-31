@@ -2,14 +2,28 @@ import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import CustomInput from "../../customInput/customInput";
 import { useIntl } from "react-intl";
 import useCustomInputController from "../../customInput/hooks/customInputController";
+import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
+import useCustomFilters from "../hooks/useCustomFilters";
 
-export default function PriceFilter() {
+export default function PriceFilter({
+  filtersController,
+}: {
+  filtersController: ReturnType<typeof useCustomFilters>;
+}) {
   const intl = useIntl();
-  const fromController = useCustomInputController();
-  const beforeController = useCustomInputController();
 
   return (
     <>
+      <h3
+        style={{
+          ...MyTypography.Helvetica14Medium,
+          color: MyColors.grey,
+          padding: MySpacing.s5,
+          paddingBottom: 0,
+        }}
+      >
+        {intl.formatMessage({ id: "prize_fond" })}
+      </h3>
       <div
         style={{
           display: "flex",
@@ -18,9 +32,10 @@ export default function PriceFilter() {
         }}
       >
         <CustomInput
+          type="number"
           bgColor={MyColors.bg3}
           placeholder={intl.formatMessage({ id: "from" })}
-          controller={fromController}
+          controller={filtersController.prizeMinController}
         ></CustomInput>
         <div
           style={{
@@ -33,9 +48,10 @@ export default function PriceFilter() {
           }}
         ></div>
         <CustomInput
+          type="number"
           bgColor={MyColors.bg3}
           placeholder={intl.formatMessage({ id: "before" })}
-          controller={beforeController}
+          controller={filtersController.prizeMaxController}
         ></CustomInput>
       </div>
     </>

@@ -1,14 +1,32 @@
-import { MySpacing } from "@/shared/styles";
+import { MyBordersRadius, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import CustomInput from "../customInput/customInput";
 import useInputControllers from "@/app/adminhome/manageEvents/createEvents/hooks/useInputControllers";
 import CustomMultilineInput from "../customMultilineInput/customMultilineInput";
+import { CustomButton } from "../customButton";
+import { useRef, useState } from "react";
 
 export default function EventEditCreateRows({
   createEditControllers,
 }: {
   createEditControllers: ReturnType<typeof useInputControllers>;
 }) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleUpload = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files ?? undefined;
+
+    if (files) {
+      const fileUri = URL.createObjectURL(files[0]);
+      createEditControllers.setPhotoUrl(fileUri);
+      createEditControllers.setPhotoFile(files[0]);
+    }
+  };
+
   const Title = ({ title }: { title: string }) => {
     return (
       <h2 style={{ ...MyTypography.Helvetica19Medium, padding: MySpacing.s10 }}>
@@ -16,8 +34,32 @@ export default function EventEditCreateRows({
       </h2>
     );
   };
+
   return (
     <>
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+        <img
+          src={createEditControllers.photoUrl}
+          height={100}
+          style={{ borderRadius: MyBordersRadius.r10, objectFit: "cover" }}
+        ></img>
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          style={{
+            display: "none",
+          }}
+          onChange={handleFileChange}
+        />
+        <div>
+          <CustomButton
+            outline={true}
+            onClick={handleUpload}
+            label={"Загрузить фото"}
+          ></CustomButton>
+        </div>
+      </div>
       <div
         style={{
           display: "flex",

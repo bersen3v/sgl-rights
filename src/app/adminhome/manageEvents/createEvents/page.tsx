@@ -20,7 +20,8 @@ export default function CreateEventsPage() {
   });
 
   const createEditControllers = useInputControllers({
-    photoUrlDef: "",
+    photoUrlDef:
+      "https://sun9-18.userapi.com/impg/DxTi74PxFH7VOAD5sA-LIn9OeLBt25-BUmq4IQ/kKtjOzHTWJY.jpg?size=1125x1125&quality=95&sign=dcaf83a8acb1f38bf36331be11cd4496&type=album",
     startTimeDef: 0,
     endTimeDef: 0,
     nameRuDef: "",
@@ -66,7 +67,7 @@ export default function CreateEventsPage() {
       <CustomButton
         onClick={() => {
           mutateCreateEventRequest({
-            photoUrl: createEditControllers.photoUrl,
+            photoUrlFile: createEditControllers.photoFile,
             startTime: 0,
             endTime: 0,
             nameRu: createEditControllers.nameControllerRu.value,
@@ -81,7 +82,7 @@ export default function CreateEventsPage() {
             placeEn: createEditControllers.placeControllerEn.value,
             placeKz: createEditControllers.placeControllerKz.value,
             discipline: createEditControllers.disciplineController.value,
-            prize: createEditControllers.prizeController.value,
+            prize: 1,
           });
         }}
         label={"Создать"}

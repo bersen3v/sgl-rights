@@ -2,14 +2,14 @@ import { OptionsType } from "@/shared/widgets/customSelect/customSelect";
 import { useIntl } from "react-intl";
 
 export type Filters = {
-  viewMode: OptionsType;
+  // viewMode: OptionsType;
   managers: OptionsType;
   disciplines: OptionsType;
   developers: OptionsType;
 };
 
 export const InitFilters = {
-  viewMode: [],
+  // viewMode: [],
   managers: [],
   disciplines: [],
   developers: [],

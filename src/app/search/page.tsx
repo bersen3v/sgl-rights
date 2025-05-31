@@ -5,6 +5,8 @@ import SearchPageDesktopView from "./views/searchPageDesktopView";
 import SearchPageMobileView from "./views/searchPageMobileView";
 import { useWindowSize } from "react-use";
 import { desktopMinWidth } from "@/shared/constants/adaptive";
+import { MultiValue } from "react-select";
+import { OptionType } from "@/shared/widgets/customSelect/customSelect";
 
 export default function SearchPage() {
   const searchController = useSearch();
@@ -15,6 +17,7 @@ export default function SearchPage() {
       style={{
         display: "flex",
         height: "100%",
+        width: "100%",
         flexDirection: "column",
         padding: MySpacing.s25,
         paddingBottom: 0,

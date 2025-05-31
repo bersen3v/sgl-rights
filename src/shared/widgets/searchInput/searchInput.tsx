@@ -2,7 +2,13 @@ import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import SearchIcon from "../../../../public/icons/search.svg";
 import { useIntl } from "react-intl";
-export default function SearchInput() {
+import useSearch from "@/app/search/hooks/useSearch";
+
+export default function SearchInput({
+  searchController,
+}: {
+  searchController: ReturnType<typeof useSearch>;
+}) {
   const intl = useIntl();
   return (
     <div
@@ -21,6 +27,8 @@ export default function SearchInput() {
       <input
         placeholder={intl.formatMessage({ id: "search" })}
         color={MyColors.white}
+        value={searchController.searchQuery}
+        onChange={searchController.onChangeSearchQuery}
         style={{
           ...MyTypography.Helvetica14Medium,
           caretColor: MyColors.white,

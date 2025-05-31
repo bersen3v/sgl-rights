@@ -36,6 +36,7 @@ export default function useInputControllers({
   disciplineDef?: string;
   prizeDef?: string;
 }) {
+  const [photoFile, setPhotoFile] = useState<File | undefined>(undefined);
   const [photoUrl, setPhotoUrl] = useState(photoUrlDef);
   const [startTime, setStartTime] = useState<number>(startTimeDef);
   const [endTime, setEndTime] = useState<number>(endTimeDef);
@@ -67,6 +68,8 @@ export default function useInputControllers({
 
   return {
     photoUrl,
+    photoFile,
+    setPhotoFile,
     setPhotoUrl,
     startTime,
     setStartTime,

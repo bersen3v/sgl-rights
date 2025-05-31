@@ -1,76 +1,82 @@
 import { gameEventApiManager } from "@/entities/gameEvent/api/gameEventApiManager";
 import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
 import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
+import useRequest from "@/shared/network/hooks/useRequest";
 import { OptionType } from "@/shared/widgets/customSelect/customSelect";
 import useCustomFilters from "@/shared/widgets/filtersBox/hooks/useCustomFilters";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { MultiValue, SingleValue } from "react-select";
 
 export default function useSearch() {
+  const [events, setEvents] = useState<GameEvent[] | undefined>(undefined);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const onChangeSearchQuery = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setSearchQuery(e.target.value);
+  };
+
   const filtersController = useCustomFilters({
     onChange: () => {},
   });
 
-  const [events, setEvents] = useState<GameEvent[] | undefined>(undefined);
+  const [searchEventsRequest, reloadSearchEventsRequest] = useRequest(
+    () =>
+      gameEventApiManager.searchEvents({
+        query: searchQuery,
+        disciplines: (
+          filtersController.disciplinesController
+            .selected as MultiValue<OptionType>
+        )
+          ?.map((e) => `"${e.label}"`)
+          .join(","),
 
-  const [searchEventsRequest, mutateSearchEventsRequest] = useMutateRequest(
-    gameEventApiManager.searchEvents,
-    {
-      onSuccess: (events: GameEvent[]) => {
-        setEvents(events);
-      },
-      onFail: () => {},
-    }
+        managers: (
+          filtersController.managersController
+            .selected as MultiValue<OptionType>
+        )
+          ?.map((e) => `"${e.label}"`)
+          .join(","),
+
+        developers: (
+          filtersController.developersController
+            .selected as MultiValue<OptionType>
+        )
+          ?.map((e) => `"${e.label}"`)
+          .join(","),
+
+        prizeMin: Number(filtersController.prizeMinController.value),
+        prizeMax: Number(filtersController.prizeMaxController.value),
+        startTime: new Date(
+          filtersController.fromDateController.value
+        ).getTime(),
+        endTime: new Date(
+          filtersController.beforeDateController.value
+        ).getTime(),
+      }),
+    [
+      searchQuery,
+      filtersController.fromDateController.value,
+      filtersController.beforeDateController.value,
+      filtersController.developersController.selected,
+      filtersController.managersController.selected,
+      filtersController.disciplinesController.selected,
+      filtersController.prizeMinController.value,
+      filtersController.prizeMaxController.value,
+    ]
   );
 
-  const search = () => {
-    mutateSearchEventsRequest({
-      type: (
-        filtersController.viewModeController.selected as SingleValue<OptionType>
-      )?.value!,
-
-      disciplinesIds: (
-        filtersController.disciplinesController
-          .selected as MultiValue<OptionType>
-      ).map((val) => val.value),
-
-      managersIds: (
-        filtersController.managersController.selected as MultiValue<OptionType>
-      ).map((val) => val.value),
-
-      developersIds: (
-        filtersController.developersController
-          .selected as MultiValue<OptionType>
-      ).map((val) => val.value),
-
-      prizeMinLimit: 1000,
-      prizeMaxLimit: 1000000,
-      startTime: 1232131423,
-      endTime: 3422342342,
-    });
-  };
-
-  const initSearch = () => {
-    mutateSearchEventsRequest({
-      type: 1,
-      disciplinesIds: [],
-      managersIds: [],
-      developersIds: [],
-      prizeMinLimit: 0,
-      prizeMaxLimit: 1000000,
-      startTime: 123,
-      endTime: 123,
-    });
-  };
-
-  useLayoutEffect(() => {
-    initSearch();
-  }, []);
+  useEffect(() => {
+    if (searchEventsRequest.isLoaded && !searchEventsRequest.isLoading) {
+      setEvents(searchEventsRequest.data);
+    }
+  }, [searchEventsRequest]);
 
   return {
     events,
-    search,
-    initSearch,
     filtersController,
+    searchQuery,
+    onChangeSearchQuery,
   };
 }

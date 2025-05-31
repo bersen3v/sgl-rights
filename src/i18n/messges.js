@@ -26,6 +26,8 @@ export const messages = {
     developer: "Developer",
     from: "From",
     before: "Before",
+    event_dates: "Даты проведения",
+    prize_fond: "Призовой фонд",
 
     // event details
     description: "Description",
@@ -80,6 +82,8 @@ export const messages = {
     developer: "Разработчик",
     from: "От",
     before: "До",
+    event_dates: "Даты проведения",
+    prize_fond: "Призовой фонд",
 
     // подробнее о эвенте
     description: "Описание",
@@ -133,6 +137,8 @@ export const messages = {
     developer: "Әзірлеуші",
     from: "Бастап",
     before: "Дейін",
+    event_dates: "Даты проведения",
+    prize_fond: "Призовой фонд",
 
     // event details
     description: "Сипаттама",

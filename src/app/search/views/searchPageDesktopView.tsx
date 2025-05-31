@@ -5,6 +5,8 @@ import useSearch from "../hooks/useSearch";
 import SearchPageFilters from "../components/searchPageFilters";
 import EventsScroll from "@/shared/widgets/eventsScroll/eventsScroll";
 import SearchInput from "@/shared/widgets/searchInput/searchInput";
+import { MultiValue } from "react-select";
+import { OptionType } from "@/shared/widgets/customSelect/customSelect";
 
 export default function SearchPageDesktopView({
   searchController,
@@ -15,6 +17,7 @@ export default function SearchPageDesktopView({
     <div
       style={{
         display: "flex",
+        width: "100%",
         flex: 1,
         gap: MySpacing.s20,
       }}
@@ -28,9 +31,10 @@ export default function SearchPageDesktopView({
           position: "sticky",
           top: 10,
           paddingBottom: 20,
+          overflow: "auto",
         }}
       >
-        <SearchInput></SearchInput>
+        <SearchInput searchController={searchController}></SearchInput>
         <SearchPageFilters
           filtersController={searchController.filtersController}
         ></SearchPageFilters>

@@ -18,14 +18,12 @@ export default function CustomInput({
     <div
       style={{
         display: "flex",
-
         width: "100%",
         backgroundColor: bgColor,
         borderRadius: MyBordersRadius.r15,
         padding: MySpacing.s15,
         alignItems: "center",
         paddingLeft: MySpacing.s15,
-
         gap: MySpacing.s10,
       }}
     >

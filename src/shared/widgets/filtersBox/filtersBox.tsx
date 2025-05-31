@@ -10,6 +10,7 @@ import { useIntl } from "react-intl";
 import FilterSelects from "./components/filterSelects";
 import FiltersHeader from "./components/filtersHeader";
 import PriceFilter from "./components/priceFilter";
+import DateFilter from "./components/dateFilter";
 
 export default function FiltersBox({
   filtersController,
@@ -34,7 +35,8 @@ export default function FiltersBox({
       >
         <FiltersHeader filtersController={filtersController}></FiltersHeader>
         <FilterSelects filtersController={filtersController}></FilterSelects>
-        <PriceFilter></PriceFilter>
+        <PriceFilter filtersController={filtersController}></PriceFilter>
+        <DateFilter filtersController={filtersController}></DateFilter>
 
         {isMobileView && (
           <CustomButton

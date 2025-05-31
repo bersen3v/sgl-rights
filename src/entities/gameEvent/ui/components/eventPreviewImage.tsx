@@ -10,7 +10,7 @@ export default function EventPreviewImage({ event }: { event: GameEvent }) {
         borderRadius: MyBordersRadius.r10,
         objectFit: "cover",
       }}
-      src={event.previewPhoto}
+      src={`http://localhost:8090/getPhoto?id=${event.previewPhoto}`}
       alt={"Превью эвента"}
     />
   );

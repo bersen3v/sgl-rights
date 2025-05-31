@@ -22,7 +22,7 @@ export default function EventsScroll({
       }}
     >
       {events ? (
-        [...events, ...events, ...events, ...events].map((event, index) => (
+        [...events].map((event, index) => (
           <EventCard
             isAdmin={isAdmin}
             fullWidth={fullWidth}

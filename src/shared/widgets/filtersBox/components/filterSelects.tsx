@@ -11,7 +11,7 @@ export default function FilterSelects({
   const intl = useIntl();
   return (
     <>
-      <CustomSelect
+      {/* <CustomSelect
         placeholder={"Вид"}
         isMulti={false}
         customSelectController={filtersController.viewModeController}
@@ -19,7 +19,7 @@ export default function FilterSelects({
           label: intl.formatMessage({ id: InitViewModeFilter.label }),
           value: InitViewModeFilter.value,
         }}
-      ></CustomSelect>
+      ></CustomSelect> */}
       <CustomSelect
         placeholder={intl.formatMessage({ id: "discipline" })}
         customSelectController={filtersController.disciplinesController}
