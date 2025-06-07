@@ -1,10 +1,10 @@
 import useCustomInputController from "@/shared/widgets/customInput/hooks/customInputController";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useInputControllers({
   photoUrlDef = "",
-  startTimeDef = 0,
-  endTimeDef = 0,
+  startTimeDef = "",
+  endTimeDef = "",
   nameRuDef = "",
   nameEnDef = "",
   nameKzDef = "",
@@ -20,8 +20,8 @@ export default function useInputControllers({
   prizeDef = "",
 }: {
   photoUrlDef?: string;
-  startTimeDef?: number;
-  endTimeDef?: number;
+  startTimeDef?: string;
+  endTimeDef?: string;
   nameRuDef?: string;
   nameEnDef?: string;
   nameKzDef?: string;
@@ -38,8 +38,6 @@ export default function useInputControllers({
 }) {
   const [photoFile, setPhotoFile] = useState<File | undefined>(undefined);
   const [photoUrl, setPhotoUrl] = useState(photoUrlDef);
-  const [startTime, setStartTime] = useState<number>(startTimeDef);
-  const [endTime, setEndTime] = useState<number>(endTimeDef);
 
   const nameControllerRu = useCustomInputController(nameRuDef);
   const nameControllerEn = useCustomInputController(nameEnDef);
@@ -59,22 +57,34 @@ export default function useInputControllers({
   const disciplineController = useCustomInputController(disciplineDef);
   const prizeController = useCustomInputController(prizeDef);
 
-  const startDateInputController = useCustomInputController(
-    startTimeDef.toString()
-  );
-  const endtDateInputController = useCustomInputController(
-    endTimeDef.toString()
-  );
+  const startDateInputController = useCustomInputController(startTimeDef);
+  const endtDateInputController = useCustomInputController(endTimeDef);
+
+  const isParamsReady = () =>
+    nameControllerRu.value !== "" &&
+    nameControllerEn.value !== "" &&
+    nameControllerKz.value !== "" &&
+    descriptionControllerRu.value !== "" &&
+    descriptionControllerEn.value !== "" &&
+    descriptionControllerKz.value !== "" &&
+    managerController.value !== "" &&
+    developerController.value !== "" &&
+    placeControllerRu.value !== "" &&
+    placeControllerEn.value !== "" &&
+    placeControllerEn.value !== "" &&
+    disciplineController.value !== "" &&
+    prizeController.value !== "" &&
+    startDateInputController.value !== "" &&
+    endtDateInputController.value !== "";
+
+  const isPhotoReady = () => photoFile !== undefined;
 
   return {
+    isPhotoReady,
     photoUrl,
     photoFile,
     setPhotoFile,
     setPhotoUrl,
-    startTime,
-    setStartTime,
-    endTime,
-    setEndTime,
     nameControllerRu,
     nameControllerEn,
     nameControllerKz,
@@ -90,5 +100,6 @@ export default function useInputControllers({
     prizeController,
     startDateInputController,
     endtDateInputController,
+    isParamsReady,
   };
 }

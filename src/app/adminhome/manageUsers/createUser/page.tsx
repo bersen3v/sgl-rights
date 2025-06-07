@@ -7,6 +7,10 @@ import useCustomInputController from "@/shared/widgets/customInput/hooks/customI
 import useUserCustomInputs from "./hook/useUserCustomInputs";
 import UserCreateFields from "@/shared/widgets/userCreateFields/userCreateFields";
 import { CustomButton } from "@/shared/widgets/customButton";
+import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
+import { userApiManager } from "@/entities/user/api/userApiManager";
+import { useRouter } from "next/navigation";
+import { showSuccessNotification } from "@/shared/notifications/notificationsController";
 
 // export type User = {
 //   id: string;
@@ -19,12 +23,31 @@ import { CustomButton } from "@/shared/widgets/customButton";
 // };
 
 export default function CreateUserPage() {
+  const router = useRouter();
+  const [createUserRequest, mutateCreateUserRequest] = useMutateRequest(
+    userApiManager.createUser,
+    {
+      onSuccess: (responce: boolean) => {
+        router.back();
+        showSuccessNotification({
+          message: "Юзер успешно создан",
+        });
+      },
+      onFail: () => {},
+    }
+  );
+
   const userFieldsController = useUserCustomInputs({
+    photoUrlDef:
+      "https://sun9-18.userapi.com/impg/DxTi74PxFH7VOAD5sA-LIn9OeLBt25-BUmq4IQ/kKtjOzHTWJY.jpg?size=1125x1125&quality=95&sign=dcaf83a8acb1f38bf36331be11cd4496&type=album",
     firstNameDef: "",
     lastNameDef: "",
     companyDef: "",
     mailDef: "",
     phoneDef: "",
+    loginDef: "",
+    passwordDef: "",
+    isAdminDef: false,
   });
 
   return (
@@ -42,7 +65,22 @@ export default function CreateUserPage() {
       <UserCreateFields
         userFieldsController={userFieldsController}
       ></UserCreateFields>
-      <CustomButton onClick={() => {}} label={"Создать"}></CustomButton>
+      <CustomButton
+        onClick={() => {
+          mutateCreateUserRequest({
+            photoUrlFile: userFieldsController.photoFile,
+            firstName: userFieldsController.firstNameController.value,
+            lastName: userFieldsController.lastNameController.value,
+            company: userFieldsController.companyController.value,
+            mail: userFieldsController.mailController.value,
+            phone: userFieldsController.phoneController.value,
+            isAdmin: 1,
+            login: userFieldsController.loginController.value,
+            password: userFieldsController.passwordController.value,
+          });
+        }}
+        label={"Создать"}
+      ></CustomButton>
     </div>
   );
 }

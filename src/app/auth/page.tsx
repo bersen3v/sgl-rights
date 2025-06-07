@@ -6,6 +6,7 @@ import {
 import { userApiManager } from "@/entities/user/api/userApiManager";
 import { desktopMinWidth } from "@/shared/constants/adaptive";
 import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
+import { showErrorNotification } from "@/shared/notifications/notificationsController";
 import { MySpacing } from "@/shared/styles";
 import { CustomButton } from "@/shared/widgets/customButton";
 import CustomInput from "@/shared/widgets/customInput/customInput";
@@ -30,9 +31,13 @@ export default function AuthPage() {
       if (id) {
         localStorage.setItem("userKey", id);
         router.push(`/user/${id}`);
+        return;
       }
+      showErrorNotification({ message: "Такого пользователя не существует" });
     },
-    onFail: () => {},
+    onFail: () => {
+      showErrorNotification({ message: "Такого пользователя не существует" });
+    },
   });
 
   const handleEntryClick = () => {

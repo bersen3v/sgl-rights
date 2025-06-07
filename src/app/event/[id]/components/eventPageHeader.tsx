@@ -1,5 +1,6 @@
 import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
 import useCurrentLocale from "@/i18n/useCurrentLocale";
+import { baseUrl } from "@/shared/network/config/baseUrl";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { useIntl } from "react-intl";
@@ -20,7 +21,7 @@ export default function EventPageHeader({
           borderRadius: MyBordersRadius.r20,
           objectFit: "cover",
         }}
-        src={event.previewPhoto}
+        src={baseUrl + `/getPhoto?id=${event.previewPhoto}`}
         alt={"фото эвента"}
       />
       <div

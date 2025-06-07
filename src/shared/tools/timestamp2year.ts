@@ -5,7 +5,7 @@ export default function timestamp2year({
 }: {
   timestamp: number;
 }): string {
-  const date = new Date(timestamp * 1000);
+  const date = new Date(timestamp);
 
   const year = addLeadingZero({ num: date.getFullYear() });
 

@@ -9,21 +9,32 @@ import { CreateEventParams } from "@/entities/gameEvent/api/methods/create/creat
 import EventEditCreateRows from "@/shared/widgets/eventEditCreateRows/eventEditCreateRows";
 import useInputControllers from "./hooks/useInputControllers";
 import CustomBackButton from "@/shared/widgets/customBackButton/customBackButton";
+import {
+  showErrorNotification,
+  showSuccessNotification,
+} from "@/shared/notifications/notificationsController";
+import { useRouter } from "next/navigation";
 
 export default function CreateEventsPage() {
+  const router = useRouter();
   const [createEventRequest, mutateCreateEventRequest] = useMutateRequest<
     boolean,
     CreateEventParams
   >(gameEventApiManager.createEvent, {
-    onSuccess: () => {},
+    onSuccess: () => {
+      router.back();
+      showSuccessNotification({
+        message: "Событие успешно добавлено",
+      });
+    },
     onFail: () => {},
   });
 
   const createEditControllers = useInputControllers({
     photoUrlDef:
       "https://sun9-18.userapi.com/impg/DxTi74PxFH7VOAD5sA-LIn9OeLBt25-BUmq4IQ/kKtjOzHTWJY.jpg?size=1125x1125&quality=95&sign=dcaf83a8acb1f38bf36331be11cd4496&type=album",
-    startTimeDef: 0,
-    endTimeDef: 0,
+    startTimeDef: "",
+    endTimeDef: "",
     nameRuDef: "",
     nameEnDef: "",
     nameKzDef: "",
@@ -66,10 +77,23 @@ export default function CreateEventsPage() {
 
       <CustomButton
         onClick={() => {
+          if (
+            !createEditControllers.isParamsReady() ||
+            !createEditControllers.isPhotoReady()
+          ) {
+            showErrorNotification({
+              message: "Ты заполнил не все поля",
+            });
+            return;
+          }
           mutateCreateEventRequest({
             photoUrlFile: createEditControllers.photoFile,
-            startTime: 0,
-            endTime: 0,
+            startTime: new Date(
+              createEditControllers.startDateInputController.value
+            ).getTime(),
+            endTime: new Date(
+              createEditControllers.endtDateInputController.value
+            ).getTime(),
             nameRu: createEditControllers.nameControllerRu.value,
             nameEn: createEditControllers.nameControllerEn.value,
             nameKz: createEditControllers.nameControllerKz.value,
@@ -82,7 +106,7 @@ export default function CreateEventsPage() {
             placeEn: createEditControllers.placeControllerEn.value,
             placeKz: createEditControllers.placeControllerKz.value,
             discipline: createEditControllers.disciplineController.value,
-            prize: 1,
+            prize: Number(createEditControllers.prizeController.value),
           });
         }}
         label={"Создать"}

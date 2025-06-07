@@ -6,13 +6,19 @@ import { CSSProperties, use } from "react";
 import { AutoSizer } from "react-virtualized";
 import { FixedSizeList as List } from "react-window";
 
-export default function AllUsersScroll({ users }: { users: User[] }) {
+export default function AllUsersScroll({
+  users,
+  onRemove = () => {},
+}: {
+  users: User[];
+  onRemove?: (userId: string) => void;
+}) {
   const Row = ({ index, style }: { index: number; style: CSSProperties }) => {
     const user = users[index];
 
     return (
       <div style={{ marginBottom: 10 }}>
-        <UserInfo maxHeight={140} user={user} isAdmin></UserInfo>
+        <UserInfo onRemove={onRemove} user={user} isAdmin></UserInfo>
       </div>
     );
   };

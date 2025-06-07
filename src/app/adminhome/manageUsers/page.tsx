@@ -10,6 +10,7 @@ import { CSSProperties, Key } from "react";
 import { AutoSizer } from "react-virtualized";
 import { FixedSizeList as List } from "react-window";
 import AllUsersScroll from "./components/allUsersScroll";
+import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
 
 export default function ManageUsersPage() {
   const router = useRouter();
@@ -17,6 +18,15 @@ export default function ManageUsersPage() {
   const [getAllUsersRequest, reloadGetAllUsersRequest] = useRequest(
     userApiManager.getAllUsers,
     []
+  );
+
+  const [removeUserRequest, mutateRemoveUserRequest] = useMutateRequest(
+    userApiManager.removeUser,
+    {
+      onSuccess: () => {
+        reloadGetAllUsersRequest();
+      },
+    }
   );
 
   return (
@@ -63,7 +73,12 @@ export default function ManageUsersPage() {
 
       <div style={{ display: "flex", height: "100%" }}>
         {getAllUsersRequest.isLoaded && !getAllUsersRequest.isLoading ? (
-          <AllUsersScroll users={getAllUsersRequest.data}></AllUsersScroll>
+          <AllUsersScroll
+            onRemove={(userId: string) => {
+              mutateRemoveUserRequest({ id: Number(userId) });
+            }}
+            users={getAllUsersRequest.data}
+          ></AllUsersScroll>
         ) : (
           <></>
         )}

@@ -1,8 +1,13 @@
 import { baseUrl } from "@/shared/network/config/baseUrl";
+import fetchStringFromUrl from "@/shared/network/methods/fetchStringFromUrl";
+import postRequestWithResponse from "@/shared/network/methods/postRequestWithResponse";
+import putRequestWithResponse from "@/shared/network/methods/putRequestWithResponce";
+import { createQueryString } from "@/shared/tools/createQueryString";
 
 export type EditEventParams = {
   id: number;
-  photoUrl: string;
+  photoUrlFile: File | undefined;
+  previewPhoto: string | undefined;
   startTime: number;
   endTime: number;
   nameRu: string;
@@ -17,21 +22,21 @@ export type EditEventParams = {
   placeEn: string;
   placeKz: string;
   discipline: string;
-  prize: string;
+  prize: number;
 };
 
 export default async function editEvent(
   editEventParams: EditEventParams
 ): Promise<boolean> {
-  const path = baseUrl + "/editEvent";
+  const params = createQueryString(editEventParams);
+  const path = baseUrl + `/updateEvent?${params}`;
 
-  const data = {
-    result: true,
-  };
+  const formData = new FormData();
+  if (editEventParams.photoUrlFile) {
+    formData.append("photo", editEventParams.photoUrlFile);
+  }
 
-  return (
-    data as {
-      result: boolean;
-    }
-  ).result;
+  await postRequestWithResponse(path, formData);
+
+  return true;
 }

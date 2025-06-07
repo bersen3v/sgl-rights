@@ -7,6 +7,8 @@ import CustomBackButton from "@/shared/widgets/customBackButton/customBackButton
 import { CustomButton } from "@/shared/widgets/customButton";
 import { useRouter } from "next/navigation";
 import AllSalesScroll from "./components/allSalesScroll";
+import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
+import { userApiManager } from "@/entities/user/api/userApiManager";
 
 export default function ManageSalesPage() {
   const router = useRouter();
@@ -15,6 +17,28 @@ export default function ManageSalesPage() {
     saleApiManager.getAllSales,
     []
   );
+
+  const [removeSaleRequest, mutateRemoveSaleRequest] = useMutateRequest(
+    saleApiManager.removeSale,
+    {
+      onSuccess: () => {
+        reloadGetAllSalesRequest();
+      },
+    }
+  );
+
+  const onSaleRemove = ({
+    userId,
+    eventId,
+  }: {
+    userId: number;
+    eventId: number;
+  }) => {
+    mutateRemoveSaleRequest({
+      userId: userId,
+      eventId: eventId,
+    });
+  };
 
   return (
     <div
@@ -51,7 +75,7 @@ export default function ManageSalesPage() {
         <div style={{ flexGrow: 0 }}>
           <CustomButton
             onClick={() => {
-              router.push("/adminhome/manageUsers/createUser");
+              router.push("/adminhome/manageSales/createSale");
             }}
             label={"Сделать продажу"}
           ></CustomButton>
@@ -60,7 +84,10 @@ export default function ManageSalesPage() {
 
       <div style={{ display: "flex", height: "100%" }}>
         {getAllSalesRequest.isLoaded && !getAllSalesRequest.isLoading ? (
-          <AllSalesScroll sales={getAllSalesRequest.data}></AllSalesScroll>
+          <AllSalesScroll
+            sales={getAllSalesRequest.data}
+            onSaleRemove={onSaleRemove}
+          ></AllSalesScroll>
         ) : (
           <></>
         )}

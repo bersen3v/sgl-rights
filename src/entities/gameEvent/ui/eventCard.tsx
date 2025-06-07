@@ -5,15 +5,18 @@ import { useRouter } from "next/navigation";
 import { useIntl } from "react-intl";
 import EventCardText from "./components/eventCardText";
 import EventPreviewImage from "./components/eventPreviewImage";
+import { gameEventApiManager } from "../api/gameEventApiManager";
 
 export default function EventCard({
   event,
   fullWidth = false,
   isAdmin = false,
+  onRemove = () => {},
 }: {
   fullWidth?: boolean;
   event: GameEvent;
   isAdmin?: boolean;
+  onRemove?: (eventId: number) => void;
 }) {
   const router = useRouter();
   const intl = useIntl();
@@ -60,8 +63,8 @@ export default function EventCard({
               ></CustomButton>
 
               <CustomButton
-                onClick={() => {
-                  router.push(`/event/${event.id}`);
+                onClick={async () => {
+                  onRemove(event.id);
                 }}
                 label={"Удалить"}
               ></CustomButton>

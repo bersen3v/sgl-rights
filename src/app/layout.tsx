@@ -10,6 +10,7 @@ import { LOCALES } from "@/i18n/locales";
 import I18nWrapper from "@/shared/widgets/i18nWrapper/i18nWrapper";
 
 import { LocaleContext } from "@/shared/context/localeContext";
+import { Toaster, toast } from "sonner";
 
 const helvetica = localFont({
   src: [
@@ -64,6 +65,7 @@ export default function RootLayout({
             locale={defaultLocale}
             messages={messages[currentLocale]}
           >
+            <Toaster position="top-right" richColors></Toaster>
             <CustomHeader
               locale={currentLocale}
               setLocale={setCurrentLocale}

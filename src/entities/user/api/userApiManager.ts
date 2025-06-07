@@ -4,6 +4,9 @@ import getUserById from "./methods/getUserById";
 import getUserEvents from "./methods/getUserEvents";
 import sendProposalRequest from "./methods/sendProposalRequest";
 import getAllUsers from "./methods/getAllUsers";
+import createUser from "./methods/createUser";
+import updateUser from "./methods/updateUser";
+import removeUser from "./methods/removeUser";
 
 export const userApiManager = {
   authUser,
@@ -11,4 +14,7 @@ export const userApiManager = {
   getUserEvents,
   sendProposalRequest,
   getAllUsers,
+  createUser,
+  updateUser,
+  removeUser,
 };

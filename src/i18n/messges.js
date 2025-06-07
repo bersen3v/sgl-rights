@@ -28,6 +28,8 @@ export const messages = {
     before: "Before",
     event_dates: "Даты проведения",
     prize_fond: "Призовой фонд",
+    noData: "Ничего не найдено",
+    loading: "Загрузка",
 
     // event details
     description: "Description",
@@ -84,6 +86,8 @@ export const messages = {
     before: "До",
     event_dates: "Даты проведения",
     prize_fond: "Призовой фонд",
+    noData: "Ничего не найдено",
+    loading: "Загрузка",
 
     // подробнее о эвенте
     description: "Описание",
@@ -137,8 +141,10 @@ export const messages = {
     developer: "Әзірлеуші",
     from: "Бастап",
     before: "Дейін",
-    event_dates: "Даты проведения",
-    prize_fond: "Призовой фонд",
+    event_dates: "Даты проведения kz",
+    prize_fond: "Призовой фонд kz",
+    noData: "Ничего не найдено",
+    loading: "Загрузка",
 
     // event details
     description: "Сипаттама",

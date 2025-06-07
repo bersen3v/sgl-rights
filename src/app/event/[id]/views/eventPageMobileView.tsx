@@ -3,6 +3,7 @@ import { GameEvent } from "@/entities/gameEvent/model/gameEvent";
 import EventActions from "../components/eventActions";
 import InfoBoxes from "../components/infoBoxes";
 import EventPageHeader from "../components/eventPageHeader";
+import CustomBackButton from "@/shared/widgets/customBackButton/customBackButton";
 
 export default function EventPageMobileView({ event }: { event: GameEvent }) {
   return (
@@ -15,6 +16,7 @@ export default function EventPageMobileView({ event }: { event: GameEvent }) {
         gap: MySpacing.s10,
       }}
     >
+      <CustomBackButton></CustomBackButton>
       <EventPageHeader event={event} direction="column"></EventPageHeader>
       <EventActions event={event}></EventActions>
       <InfoBoxes event={event}></InfoBoxes>

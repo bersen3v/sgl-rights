@@ -1,8 +1,10 @@
 import { User } from "@/entities/user/model/user";
+import { baseUrl } from "@/shared/network/config/baseUrl";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { CustomButton } from "@/shared/widgets/customButton";
 import { useRouter } from "next/navigation";
+import { use } from "react";
 import { useIntl } from "react-intl";
 
 export default function UserInfo({
@@ -10,11 +12,14 @@ export default function UserInfo({
   isMobile = false,
   maxHeight = undefined,
   isAdmin = false,
+  onRemove = () => {},
 }: {
   user: User;
   isMobile?: boolean;
   maxHeight?: number;
   isAdmin?: boolean;
+  onRemove?: (userId: string) => void;
+  
 }) {
   const router = useRouter();
   const intl = useIntl();
@@ -38,7 +43,7 @@ export default function UserInfo({
             borderRadius: MyBordersRadius.r10,
             objectFit: "cover",
           }}
-          src={user.previewPhoto}
+          src={baseUrl + `/getPhoto?id=${user.previewPhoto}`}
           alt={"Превью юзера"}
         />
       )}
@@ -60,7 +65,7 @@ export default function UserInfo({
           }}
         >
           <h2 style={{ ...MyTypography.Helvetica19Medium }}>
-            {user.first_name} {user.last_name}
+            {user.firstName} {user.lastName}
           </h2>
           <div
             style={{
@@ -80,6 +85,20 @@ export default function UserInfo({
             </h2>
             <h2 style={{ ...MyTypography.Helvetica14Medium }}>{user.mail}</h2>
             <h2 style={{ ...MyTypography.Helvetica14Medium }}>{user.phone}</h2>
+            <h2 style={{ ...MyTypography.Helvetica14Medium }}>
+              {user.isAdmin === 1 && "Администратор"}
+            </h2>
+            {isAdmin && (
+              <>
+                {" "}
+                <h2 style={{ ...MyTypography.Helvetica14Medium }}>
+                  Логин: {user.login}
+                </h2>
+                <h2 style={{ ...MyTypography.Helvetica14Medium }}>
+                  Пароль: {user.password}
+                </h2>
+              </>
+            )}
           </div>
         </div>
         {isAdmin && (
@@ -102,7 +121,12 @@ export default function UserInfo({
               }}
               label={"Редактировать"}
             ></CustomButton>
-            <CustomButton onClick={() => {}} label={"Удалить"}></CustomButton>
+            <CustomButton
+              onClick={() => {
+                onRemove(user.id);
+              }}
+              label={"Удалить"}
+            ></CustomButton>
           </div>
         )}
       </div>

@@ -1,24 +1,14 @@
+import fetchStringFromUrl from "@/shared/network/methods/fetchStringFromUrl";
 import { User } from "../../model/user";
+import { baseUrl } from "@/shared/network/config/baseUrl";
 
 export default async function getUserById({
   id,
 }: {
   id: string;
 }): Promise<User> {
-  const data = {
-    result: {
-      id: "324234",
-      previewPhoto:
-        "https://iai.tv/assets/Uploads/_resampled/FillWyI4MDAiLCI1MDAiXQ/A-lioness.webp",
-      first_name: "Дмитрий",
-      last_name: "Пислевич",
-      company: "ИП Пислевич Д.Г",
-      mail: "info@sglone.ru",
-      phone: "+7 913 532 1204",
-    },
-  };
+  const path = baseUrl + `/getUserById?id=${id}`;
+  const data = await fetchStringFromUrl(path);
 
-  const answer = (data as { result: User }).result;
-
-  return answer;
+  return data as User;
 }

@@ -1,5 +1,6 @@
 "use client";
 import { gameEventApiManager } from "@/entities/gameEvent/api/gameEventApiManager";
+import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
 import useRequest from "@/shared/network/hooks/useRequest";
 import { MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
@@ -13,6 +14,16 @@ export default function ManageEventsPage() {
   const [eventsRequest, reloadEventsRequest] = useRequest(
     gameEventApiManager.getAllEvents,
     []
+  );
+
+  const [removeEventRequest, mutateRemoveEventRequest] = useMutateRequest(
+    gameEventApiManager.removeEvent,
+    {
+      onSuccess: () => {
+        reloadEventsRequest();
+      },
+      onFail: () => {},
+    }
   );
 
   return (
@@ -56,7 +67,13 @@ export default function ManageEventsPage() {
       </div>
 
       {eventsRequest.isLoaded && !eventsRequest.isLoading ? (
-        <EventsScroll isAdmin events={eventsRequest.data}></EventsScroll>
+        <EventsScroll
+          onEventRemove={(eventId) => {
+            mutateRemoveEventRequest({ id: eventId });
+          }}
+          isAdmin
+          events={eventsRequest.data}
+        ></EventsScroll>
       ) : (
         <div></div>
       )}

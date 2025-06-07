@@ -18,7 +18,8 @@
     "react-select": "^5.10.1",
     "react-use": "^17.6.0",
     "react-virtualized": "^9.22.6",
-    "react-window": "^1.8.11"
+    "react-window": "^1.8.11",
+    "sonner": "^2.0.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

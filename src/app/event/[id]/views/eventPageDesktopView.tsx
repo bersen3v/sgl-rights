@@ -10,6 +10,7 @@ export default function EventPageDesktopView({ event }: { event: GameEvent }) {
     <div
       style={{
         display: "flex",
+        flex: 1,
         flexDirection: "column",
         padding: MySpacing.s25,
         paddingTop: 0,
@@ -24,7 +25,7 @@ export default function EventPageDesktopView({ event }: { event: GameEvent }) {
         <div
           style={{
             display: "flex",
-            minWidth: "75%",
+            width: "75%",
             flexDirection: "column",
             gap: MySpacing.s10,
           }}
@@ -35,7 +36,7 @@ export default function EventPageDesktopView({ event }: { event: GameEvent }) {
           style={{
             display: "flex",
             flexDirection: "column",
-            minWidth: "25%",
+            width: "25%",
             gap: MySpacing.s10,
           }}
         >
