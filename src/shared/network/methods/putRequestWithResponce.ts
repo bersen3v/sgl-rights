@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 
 export default async function putRequestWithResponse(
   path: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any
 ): Promise<unknown> {
   try {
