@@ -10,7 +10,10 @@ import { CustomButton } from "@/shared/widgets/customButton";
 import { useMutateRequest } from "@/shared/network/hooks/useMutateRequest";
 import { userApiManager } from "@/entities/user/api/userApiManager";
 import { useRouter } from "next/navigation";
-import { showSuccessNotification } from "@/shared/notifications/notificationsController";
+import {
+  showErrorNotification,
+  showSuccessNotification,
+} from "@/shared/notifications/notificationsController";
 
 // export type User = {
 //   id: string;
@@ -67,6 +70,15 @@ export default function CreateUserPage() {
       ></UserCreateFields>
       <CustomButton
         onClick={() => {
+          if (
+            !userFieldsController.isInputsReady() ||
+            !userFieldsController.isPhotoReady()
+          ) {
+            showErrorNotification({
+              message: "Ты заполнил не все поля",
+            });
+            return;
+          }
           mutateCreateUserRequest({
             photoUrlFile: userFieldsController.photoFile,
             firstName: userFieldsController.firstNameController.value,
@@ -74,7 +86,7 @@ export default function CreateUserPage() {
             company: userFieldsController.companyController.value,
             mail: userFieldsController.mailController.value,
             phone: userFieldsController.phoneController.value,
-            isAdmin: 1,
+            isAdmin: userFieldsController.isAdmin ? 1 : 0,
             login: userFieldsController.loginController.value,
             password: userFieldsController.passwordController.value,
           });

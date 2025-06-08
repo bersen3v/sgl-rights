@@ -1,5 +1,7 @@
+import { userApiManager } from "@/entities/user/api/userApiManager";
 import { User } from "@/entities/user/model/user";
 import { baseUrl } from "@/shared/network/config/baseUrl";
+import useRequest from "@/shared/network/hooks/useRequest";
 import { MyBordersRadius, MyColors, MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { CustomButton } from "@/shared/widgets/customButton";
@@ -19,7 +21,6 @@ export default function UserInfo({
   maxHeight?: number;
   isAdmin?: boolean;
   onRemove?: (userId: string) => void;
-  
 }) {
   const router = useRouter();
   const intl = useIntl();

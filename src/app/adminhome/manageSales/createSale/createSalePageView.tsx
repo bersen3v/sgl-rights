@@ -61,10 +61,11 @@ export default function CreateSalePageView({
         padding: MySpacing.s25,
         paddingTop: 0,
         flexDirection: "column",
+        gap: MySpacing.s10,
       }}
     >
       <CustomBackButton></CustomBackButton>
-      <div style={{ display: "flex", gap: MySpacing.s10 }}>
+      <div style={{ display: "flex", gap: MySpacing.s10, flexGrow: 1 }}>
         <CustomSelect
           isMulti={false}
           placeholder={"Юзеры"}

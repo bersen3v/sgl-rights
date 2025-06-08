@@ -7,19 +7,30 @@ import { MySpacing } from "@/shared/styles";
 import { CustomButton } from "@/shared/widgets/customButton";
 import { useRouter } from "next/navigation";
 import CustomBackButton from "@/shared/widgets/customBackButton/customBackButton";
+import useRequest from "@/shared/network/hooks/useRequest";
+import { userApiManager } from "@/entities/user/api/userApiManager";
 
 export default function UserPageDesktopView({ user }: { user: User }) {
   const router = useRouter();
+  const meId = localStorage.getItem("userKey");
+  const [meInfoRequest, reloadMeInfoRequest] = useRequest(() => {
+    return userApiManager.getUserById({ id: meId ? meId : "-1" });
+  }, []);
+
   return (
     <div
       style={{ display: "flex", gap: MySpacing.s15, flexDirection: "column" }}
     >
       <div style={{ display: "flex", gap: MySpacing.s10 }}>
         <CustomBackButton></CustomBackButton>
-        <CustomButton
-          onClick={() => router.push("/adminhome")}
-          label={"Админка"}
-        ></CustomButton>
+        {meInfoRequest.isLoaded &&
+          !meInfoRequest.isLoading &&
+          meInfoRequest.data.isAdmin === 1 && (
+            <CustomButton
+              onClick={() => router.push("/adminhome")}
+              label={"Админка"}
+            ></CustomButton>
+          )}
       </div>
       <UserInfo user={user}></UserInfo>
       <UserEvents userId={user.id}></UserEvents>

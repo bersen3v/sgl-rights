@@ -34,6 +34,17 @@ export default function useUserCustomInputs({
   const loginController = useCustomInputController(loginDef);
   const passwordController = useCustomInputController(passwordDef);
 
+  const isInputsReady = () =>
+    firstNameController.value !== "" &&
+    lastNameController.value !== "" &&
+    companyController.value !== "" &&
+    mailController.value !== "" &&
+    phoneController.value !== "" &&
+    loginController.value !== "" &&
+    passwordController.value !== "";
+
+  const isPhotoReady = () => photoFile !== undefined;
+
   return {
     photoUrl,
     setPhotoFile,
@@ -48,5 +59,7 @@ export default function useUserCustomInputs({
     photoFile,
     isAdmin,
     setIsAdmin,
+    isPhotoReady,
+    isInputsReady,
   };
 }
