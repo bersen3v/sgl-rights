@@ -1,5 +1,6 @@
 import { MyBordersRadius } from "@/shared/styles";
 import { GameEvent } from "../../model/gameEvent";
+import { baseUrl } from "@/shared/network/config/baseUrl";
 
 export default function EventPreviewImage({ event }: { event: GameEvent }) {
   return (
@@ -10,7 +11,7 @@ export default function EventPreviewImage({ event }: { event: GameEvent }) {
         borderRadius: MyBordersRadius.r10,
         objectFit: "cover",
       }}
-      src={`http://localhost:8090/getPhoto?id=${event.previewPhoto}`}
+      src={`${baseUrl}/getPhoto?id=${event.previewPhoto}`}
       alt={"Превью эвента"}
     />
   );
