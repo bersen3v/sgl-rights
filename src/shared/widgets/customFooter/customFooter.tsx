@@ -1,7 +1,9 @@
 import { MySpacing } from "@/shared/styles";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
+import { useIntl } from "react-intl";
 
 export default function CustomFooter() {
+  const intl = useIntl();
   return (
     <div
       style={{
@@ -9,24 +11,68 @@ export default function CustomFooter() {
         flexGrow: 0,
         flexDirection: "column",
         padding: MySpacing.s25,
-        paddingBottom: MySpacing.s10,
+        paddingBottom: MySpacing.s25 * 3,
         paddingTop: MySpacing.s10,
-        justifyContent: "center",
-        alignItems: "center",
+        gap: MySpacing.s25,
       }}
     >
-      <h1 style={{ ...MyTypography.Helvetica14Medium }}>ТОО СГЛ</h1>
-      <img
-        style={{
-          width: "100%",
+      <div style={{ display: "flex", gap: MySpacing.s25 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: MySpacing.s10,
+          }}
+        >
+          <h3 style={{ ...MyTypography.Helvetica19Medium }}>
+            Другие наши проекты
+          </h3>
+          <div>
+            <a
+              href={"https://sgl.one"}
+              style={{ ...MyTypography.Helvetica16Normal }}
+            >
+              sgl.one
+            </a>
+          </div>
+        </div>
 
-          objectFit: "cover",
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: MySpacing.s10,
+          }}
+        >
+          <h3 style={{ ...MyTypography.Helvetica19Medium }}>
+            {intl.formatMessage({ id: "partners" })}
+          </h3>
+          <div>
+            <a
+              href={"https://astanahub.com"}
+              style={{ ...MyTypography.Helvetica16Normal }}
+            >
+              astanahub.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: MySpacing.s10,
         }}
-        src={
-          "https://sun9-53.userapi.com/impg/d4RLvwUv9ktBUkVxHIitiDyqnWouQhUxWA3Ghw/oG-2dWMMW9U.jpg?size=1280x269&quality=95&sign=df52e8f8c8f5790ad752e4c8e443ef3e&type=album"
-        }
-        alt={"фото эвента"}
-      />
+      >
+        <h3 style={{ ...MyTypography.Helvetica19Medium }}>ТОО СГЛ</h3>
+        <div>
+          <h3 style={{ ...MyTypography.Helvetica16Normal }}>
+            Республика Казахстан, г.Алматы, мкрн. Ерменсай, ул. Жангир хана 1,
+            индекс 050000
+          </h3>
+        </div>
+      </div>
     </div>
   );
 }

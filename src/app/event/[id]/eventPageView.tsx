@@ -9,6 +9,7 @@ import { desktopMinWidth } from "@/shared/constants/adaptive";
 import { useIntl } from "react-intl";
 import { MyTypography } from "@/shared/styles/MyTypography/MyTypography";
 import { MyColors } from "@/shared/styles";
+import CustomFooter from "@/shared/widgets/customFooter/customFooter";
 
 export default function EventPageView({ eventId }: { eventId: number }) {
   const { width } = useWindowSize();
@@ -19,7 +20,14 @@ export default function EventPageView({ eventId }: { eventId: number }) {
   );
 
   return (
-    <div style={{ display: "flex", scrollbarWidth: "none", width: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        scrollbarWidth: "none",
+        width: "100%",
+        flexDirection: "column",
+      }}
+    >
       {getEventRequest.isLoaded && !getEventRequest.isLoading ? (
         <>
           {width > desktopMinWidth ? (
@@ -41,6 +49,7 @@ export default function EventPageView({ eventId }: { eventId: number }) {
           </h2>
         </div>
       )}
+      <CustomFooter></CustomFooter>
     </div>
   );
 }

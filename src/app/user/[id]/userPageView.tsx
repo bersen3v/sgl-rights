@@ -7,6 +7,7 @@ import { useWindowSize } from "react-use";
 import UserPageDesktopView from "./views/userPageDesktopView";
 import UserPageMobileView from "./views/userPageMobileView";
 import { desktopMinWidth } from "@/shared/constants/adaptive";
+import CustomFooter from "@/shared/widgets/customFooter/customFooter";
 
 export default function UserPageView({ userId }: { userId: string }) {
   const { width } = useWindowSize();
@@ -33,6 +34,7 @@ export default function UserPageView({ userId }: { userId: string }) {
           )}
         </div>
       )}
+      <CustomFooter></CustomFooter>
     </div>
   );
 }

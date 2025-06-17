@@ -12,6 +12,7 @@ export const messages = {
     partners: "Partners",
     astana_hub: "Astana Hub",
     acselerator: "Accelerator",
+    allOurProjects: "Другие наши проекты",
 
     // main
     search: "Search",
@@ -70,6 +71,7 @@ export const messages = {
     partners: "Партнеры",
     astana_hub: "Астана Хаб",
     acselerator: "Акселератор",
+    allOurProjects: "All Our Projects",
 
     // главная
     search: "Поиск",
@@ -127,6 +129,7 @@ export const messages = {
     partners: "Серіктестер",
     astana_hub: "Astana Hub",
     acselerator: "Акселератор",
+    allOurProjects: "Другие наши проекты",
 
     // main
     search: "Іздеу",
