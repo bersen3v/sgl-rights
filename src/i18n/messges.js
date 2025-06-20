@@ -12,9 +12,9 @@ export const messages = {
     partners: "Partners",
     astana_hub: "Astana Hub",
     acselerator: "Accelerator",
-    allOurProjects: "Другие наши проекты",
-    secondTitle: "Проведение киберспортивных турниров под ключ",
-    secondMainButton: "Заказать",
+    allOurProjects: "Our other projects",
+    secondTitle: "Turnkey esports tournaments",
+    secondMainButton: "To order",
 
     // main
     search: "Search",
@@ -29,10 +29,10 @@ export const messages = {
     developer: "Developer",
     from: "From",
     before: "Before",
-    event_dates: "Даты проведения",
-    prize_fond: "Призовой фонд",
-    noData: "Ничего не найдено",
-    loading: "Загрузка",
+    event_dates: "Dates of the event",
+    prize_fond: "The prize fund",
+    noData: "Nothing was found",
+    loading: "Loading",
 
     // event details
     description: "Description",
@@ -73,7 +73,7 @@ export const messages = {
     partners: "Партнеры",
     astana_hub: "Астана Хаб",
     acselerator: "Акселератор",
-    allOurProjects: "All Our Projects",
+    allOurProjects: "Другие наши проекты",
     secondTitle: "Проведение киберспортивных турниров под ключ",
     secondMainButton: "Заказать",
 
@@ -133,9 +133,9 @@ export const messages = {
     partners: "Серіктестер",
     astana_hub: "Astana Hub",
     acselerator: "Акселератор",
-    allOurProjects: "Другие наши проекты",
-    secondTitle: "Проведение киберспортивных турниров под ключ",
-    secondMainButton: "Заказать",
+    allOurProjects: "Біздің басқа жобаларымыз",
+    secondTitle: "Кілтпен киберспорт турнирлерін өткізу",
+    secondMainButton: "Тапсырыс беру",
 
     // main
     search: "Іздеу",
@@ -152,8 +152,8 @@ export const messages = {
     before: "Дейін",
     event_dates: "Даты проведения kz",
     prize_fond: "Призовой фонд kz",
-    noData: "Ничего не найдено",
-    loading: "Загрузка",
+    noData: "Ештеңе табылған жоқ",
+    loading: "Жүктеу",
 
     // event details
     description: "Сипаттама",
