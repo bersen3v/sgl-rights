@@ -32,6 +32,7 @@ export default function MobileHomeView() {
           <HomeSearchButton
             isMobile
             messageId={"bookingEvents"}
+            path={"/search"}
           ></HomeSearchButton>
         </div>
         <div
@@ -45,6 +46,7 @@ export default function MobileHomeView() {
           <HomeSearchButton
             isMobile
             messageId={"secondMainButton"}
+            path={"https://sgl.one/"}
           ></HomeSearchButton>
         </div>
       </div>

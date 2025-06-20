@@ -36,7 +36,10 @@ export default function DesktopHomeView() {
               }}
             >
               <MainHomeText messageId="mainTitle"></MainHomeText>
-              <HomeSearchButton messageId={"bookingEvents"}></HomeSearchButton>
+              <HomeSearchButton
+                messageId={"bookingEvents"}
+                path={"/search"}
+              ></HomeSearchButton>
             </div>
 
             <div
@@ -47,7 +50,10 @@ export default function DesktopHomeView() {
               }}
             >
               <MainHomeText messageId="secondTitle"></MainHomeText>
-              <HomeSearchButton messageId="secondMainButton"></HomeSearchButton>
+              <HomeSearchButton
+                messageId="secondMainButton"
+                path={"https://sgl.one/"}
+              ></HomeSearchButton>
             </div>
           </div>
 
