@@ -17,6 +17,7 @@ export default function Partners({ isMobile = false }: { isMobile?: boolean }) {
           display: "flex",
           flexDirection: isMobile ? "column" : "row",
           gap: MySpacing.s15,
+          maxWidth: !isMobile ? "50%" : "100%",
         }}
       >
         <Player

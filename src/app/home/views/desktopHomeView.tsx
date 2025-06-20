@@ -24,12 +24,31 @@ export default function DesktopHomeView() {
           <div
             style={{
               display: "flex",
-              gap: MySpacing.s10,
+              gap: MySpacing.s25,
               flexDirection: "column",
             }}
           >
-            <MainHomeText></MainHomeText>
-            <HomeSearchButton></HomeSearchButton>
+            <div
+              style={{
+                display: "flex",
+                gap: MySpacing.s10,
+                flexDirection: "column",
+              }}
+            >
+              <MainHomeText messageId="mainTitle"></MainHomeText>
+              <HomeSearchButton messageId={"bookingEvents"}></HomeSearchButton>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                gap: MySpacing.s10,
+                flexDirection: "column",
+              }}
+            >
+              <MainHomeText messageId="secondTitle"></MainHomeText>
+              <HomeSearchButton messageId="secondMainButton"></HomeSearchButton>
+            </div>
           </div>
 
           <MainHomePhoto></MainHomePhoto>

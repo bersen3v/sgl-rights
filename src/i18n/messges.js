@@ -13,6 +13,8 @@ export const messages = {
     astana_hub: "Astana Hub",
     acselerator: "Accelerator",
     allOurProjects: "Другие наши проекты",
+    secondTitle: "Проведение киберспортивных турниров под ключ",
+    secondMainButton: "Заказать",
 
     // main
     search: "Search",
@@ -72,6 +74,8 @@ export const messages = {
     astana_hub: "Астана Хаб",
     acselerator: "Акселератор",
     allOurProjects: "All Our Projects",
+    secondTitle: "Проведение киберспортивных турниров под ключ",
+    secondMainButton: "Заказать",
 
     // главная
     search: "Поиск",
@@ -130,6 +134,8 @@ export const messages = {
     astana_hub: "Astana Hub",
     acselerator: "Акселератор",
     allOurProjects: "Другие наши проекты",
+    secondTitle: "Проведение киберспортивных турниров под ключ",
+    secondMainButton: "Заказать",
 
     // main
     search: "Іздеу",

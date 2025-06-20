@@ -73,6 +73,29 @@ export default function CustomFooter() {
           </h3>
         </div>
       </div>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: MySpacing.s10,
+        }}
+      >
+        <div style={{ display: "flex", gap: MySpacing.s25 }}>
+          <a
+            href="https://docs.google.com/document/d/12GS2MhX9W10NZEq4fHowaPbZTXxwFR7KckBE07AM7eg/edit?usp=sharing"
+            style={{ ...MyTypography.Helvetica16Normal }}
+          >
+            Политика конфиденциальности
+          </a>
+          <a
+            href="https://docs.google.com/document/d/18DgUURJ6y60Ui4jy2Lyre3k6WEhzAKyy9GlBPmUWmVA/edit?usp=sharing"
+            style={{ ...MyTypography.Helvetica16Normal }}
+          >
+            Пользовательское соглашение
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

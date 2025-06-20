@@ -21,8 +21,32 @@ export default function MobileHomeView() {
       <div
         style={{ display: "flex", gap: MySpacing.s15, flexDirection: "column" }}
       >
-        <MainHomeText isMobile></MainHomeText>
-        <HomeSearchButton isMobile></HomeSearchButton>
+        <div
+          style={{
+            display: "flex",
+            gap: MySpacing.s15,
+            flexDirection: "column",
+          }}
+        >
+          <MainHomeText isMobile messageId={"mainTitle"}></MainHomeText>
+          <HomeSearchButton
+            isMobile
+            messageId={"bookingEvents"}
+          ></HomeSearchButton>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: MySpacing.s15,
+            flexDirection: "column",
+          }}
+        >
+          <MainHomeText isMobile messageId={"secondTitle"}></MainHomeText>
+          <HomeSearchButton
+            isMobile
+            messageId={"secondMainButton"}
+          ></HomeSearchButton>
+        </div>
       </div>
       <Players isMobile></Players>
       <Partners></Partners>

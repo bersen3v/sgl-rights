@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import CustomBackButton from "@/shared/widgets/customBackButton/customBackButton";
 import useRequest from "@/shared/network/hooks/useRequest";
 import { userApiManager } from "@/entities/user/api/userApiManager";
+import CustomFooter from "@/shared/widgets/customFooter/customFooter";
 
 export default function UserPageDesktopView({ user }: { user: User }) {
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function UserPageDesktopView({ user }: { user: User }) {
       </div>
       <UserInfo user={user}></UserInfo>
       <UserEvents userId={user.id}></UserEvents>
+      {/* <CustomFooter></CustomFooter> */}
     </div>
   );
 }

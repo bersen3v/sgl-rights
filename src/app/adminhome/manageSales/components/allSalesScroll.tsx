@@ -63,7 +63,8 @@ export default function AllSalesScroll({
             покупатель:{" "}
             {getUserRequest.isLoaded &&
               !getUserRequest.isLoading &&
-              getUserRequest.data.firstName}
+              `${getUserRequest.data.firstName}
+               ${getUserRequest.data.lastName}`}
           </h2>
 
           <h2 style={{ ...MyTypography.Helvetica19Medium }}>
@@ -73,10 +74,10 @@ export default function AllSalesScroll({
               getEventRequest.data.name.ru}
           </h2>
 
-          <h2 style={{ ...MyTypography.Helvetica19Medium }}>
+          {/* <h2 style={{ ...MyTypography.Helvetica19Medium }}>
             дата продажи: {timestamp2dm({ timestamp: sale.time })},{" "}
             {timestamp2year({ timestamp: sale.time })}
-          </h2>
+          </h2> */}
         </div>
 
         <div>

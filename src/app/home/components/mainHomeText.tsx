@@ -4,8 +4,10 @@ import { useIntl } from "react-intl";
 
 export default function MainHomeText({
   isMobile = false,
+  messageId,
 }: {
   isMobile?: boolean;
+  messageId: string;
 }) {
   const intl = useIntl();
   return (
@@ -16,7 +18,7 @@ export default function MainHomeText({
           width: isMobile ? "100%" : "60%",
         }}
       >
-        {intl.formatMessage({ id: "mainTitle" })}
+        {intl.formatMessage({ id: messageId })}
       </h1>
     </div>
   );

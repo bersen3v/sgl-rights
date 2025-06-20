@@ -34,7 +34,6 @@ export default function UserPageView({ userId }: { userId: string }) {
           )}
         </div>
       )}
-      <CustomFooter></CustomFooter>
     </div>
   );
 }

@@ -4,8 +4,10 @@ import { useIntl } from "react-intl";
 
 export default function HomeSearchButton({
   isMobile = false,
+  messageId,
 }: {
   isMobile?: boolean;
+  messageId: string;
 }) {
   const intl = useIntl();
   const router = useRouter();
@@ -15,7 +17,7 @@ export default function HomeSearchButton({
         onClick={() => {
           router.push("/search");
         }}
-        label={intl.formatMessage({ id: "bookingEvents" })}
+        label={intl.formatMessage({ id: messageId })}
       ></CustomButton>
     </div>
   );
