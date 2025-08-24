@@ -4,6 +4,8 @@ import ProfileButton from "./components/profileButton";
 import LanguageSelect from "./components/languageSelect";
 import { useRouter } from "next/navigation";
 
+const blockedPages = ["/"];
+
 export default function CustomHeader({
   locale,
   setLocale,
@@ -12,6 +14,13 @@ export default function CustomHeader({
   setLocale: (text: string) => void;
 }) {
   const router = useRouter();
+
+  const path = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  if (blockedPages.includes(path)) {
+    return null;
+  }
+
   return (
     <div
       style={{

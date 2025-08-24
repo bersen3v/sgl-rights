@@ -2,7 +2,6 @@ import { MySpacing } from "@/shared/styles";
 import MainHomeText from "../components/mainHomeText";
 import HomeSearchButton from "../components/homeSearchButton";
 import Players from "../components/players";
-import CustomFooter from "@/shared/widgets/customFooter/customFooter";
 import MainHomePhoto from "../components/mainHomePhoto";
 import Partners from "../components/partners";
 
