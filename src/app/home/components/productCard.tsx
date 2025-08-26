@@ -36,6 +36,7 @@ const CircleButton = styled.div`
   align-items: center;
   padding: 1em;
   cursor: pointer;
+  box-shadow: 0px 0px 50px ${MyColors.green}50;
 `;
 
 const ProductInfo = styled.div`
@@ -82,6 +83,7 @@ export default function ProductCard({
           <TextStyle.ProductHeader>{header}</TextStyle.ProductHeader>
           <TextStyle.ProductText>{text}</TextStyle.ProductText>
         </ProductInfo>
+
         <div style={{ display: "flex" }}>
           <CircleButton
             onClick={() => {

@@ -12,11 +12,13 @@ const CustomButtonStyle = styled.button`
 
   position: relative;
   z-index: 2;
-  transition: all 0.3s ease;
 
   &:hover {
-    transform: translateY(-2px);
+    transition: all 0.3s ease;
+    transform: translateY(-5px);
+    border: 2px solid ${MyColors.green}80;
   }
+
   color: ${MyColors.green};
 `;
 

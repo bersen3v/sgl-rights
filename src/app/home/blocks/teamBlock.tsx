@@ -13,6 +13,7 @@ const BlockContainer = styled.div`
   position: relative;
   overflow-x: scroll;
   scrollbar-width: none;
+  padding-bottom: 5em;
 `;
 
 const PlayersScroll = styled.div`

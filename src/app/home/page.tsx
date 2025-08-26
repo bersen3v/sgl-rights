@@ -17,6 +17,8 @@ import ProductsBlock from "./blocks/productsBlock";
 import TeamBlock from "./blocks/teamBlock";
 import GradientBubbles from "./components/bubbles";
 import PartnersBlock from "./blocks/partnersBlock";
+import CallToActionBlock from "./blocks/callToActionBlock";
+import FaqBlock from "./blocks/faqBlock";
 
 const HomePageContainer = styled.div`
   background-color: ${MyColors.dark1};
@@ -33,6 +35,8 @@ export default function Home() {
       <ProductsBlock></ProductsBlock>
       <TeamBlock></TeamBlock>
       <PartnersBlock></PartnersBlock>
+      <CallToActionBlock></CallToActionBlock>
+      <FaqBlock></FaqBlock>
     </HomePageContainer>
   );
 }

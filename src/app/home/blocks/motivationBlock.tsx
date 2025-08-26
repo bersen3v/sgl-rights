@@ -2,8 +2,7 @@ import { styled } from "styled-components";
 import { TextStyle } from "@/shared/styles/MyTypography/textStyles";
 import { MyColors } from "@/shared/styles";
 import { desktopMinWidth } from "@/shared/constants/adaptive";
-import { Item3 } from "../components/3d/item3";
-import { Canvas } from "@react-three/fiber";
+import VideoPreview from "../components/videoPreview";
 
 const BlockContainer = styled.div`
   position: relative;
@@ -13,7 +12,7 @@ const BlockContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1em;
+  gap: 2em;
   background-color: ${MyColors.dark2};
 
   /* Для мобильных устройств - шире */
@@ -24,6 +23,9 @@ const BlockContainer = styled.div`
     padding-left: 4em;
     flex-direction: row;
   }
+
+  margin-bottom: 2em;
+  padding-bottom: 4em;
 
   /* height: 100vh; */
   /* width: 100vw; */
@@ -60,9 +62,7 @@ export default function MotivationBlock() {
       </TextContainer>
 
       <AnimationContainer>
-        {/* <Canvas>
-          <Item3></Item3>
-        </Canvas> */}
+        <VideoPreview></VideoPreview>
       </AnimationContainer>
     </BlockContainer>
   );
